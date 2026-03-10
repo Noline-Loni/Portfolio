@@ -120,7 +120,7 @@ export default function ProjectPage() {
                   className="font-body text-sm text-accent underline underline-offset-4 transition-colors hover:text-content"
                   data-hover
                 >
-                  {project.externalLink.label} &nearr;
+                  {project.externalLink.label} ↗
                 </a>
               </>
             )}

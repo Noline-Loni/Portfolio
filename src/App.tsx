@@ -11,6 +11,7 @@ import Footer from './components/Footer'
 import CustomCursor from './components/CustomCursor'
 import GrainOverlay from './components/GrainOverlay'
 import Gallery3D from './components/Gallery3D'
+import GameSection from './components/GameSection'
 import ProjectPage from './components/ProjectPage'
 
 function ScrollToHash() {
@@ -35,6 +36,7 @@ function HomePage() {
         <Services />
         <Works />
         <Gallery3D />
+        <GameSection />
         <About />
       </main>
       <Footer />
