@@ -132,7 +132,7 @@ export default function Footer() {
           &copy; {new Date().getFullYear()} Noline Lindor
         </motion.span>
 
-        <div className="flex items-center gap-8">
+        <div className="flex flex-wrap items-center gap-6 md:gap-8">
           <motion.a
             href="mailto:nolinelindor@gmail.com"
             className="font-body text-xs transition-colors duration-fast"
@@ -143,7 +143,7 @@ export default function Footer() {
             Email
           </motion.a>
           <motion.a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/noline-lindor-43b923213"
             target="_blank"
             rel="noopener noreferrer"
             className="font-body text-xs transition-colors duration-fast"
@@ -154,7 +154,7 @@ export default function Footer() {
             LinkedIn
           </motion.a>
           <motion.a
-            href="https://github.com"
+            href="https://github.com/Noline-Loni"
             target="_blank"
             rel="noopener noreferrer"
             className="font-body text-xs transition-colors duration-fast"
@@ -163,6 +163,28 @@ export default function Footer() {
             data-hover
           >
             GitHub
+          </motion.a>
+          <motion.a
+            href="https://www.instagram.com/noline_lindor"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-body text-xs transition-colors duration-fast"
+            animate={{ color: isHovered ? '#353535' : undefined }}
+            transition={{ duration: 0.6, delay: isHovered ? 0.4 : 0 }}
+            data-hover
+          >
+            Instagram
+          </motion.a>
+          <motion.a
+            href="https://www.facebook.com/noline.lindor"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-body text-xs transition-colors duration-fast"
+            animate={{ color: isHovered ? '#353535' : undefined }}
+            transition={{ duration: 0.6, delay: isHovered ? 0.4 : 0 }}
+            data-hover
+          >
+            Facebook
           </motion.a>
         </div>
       </motion.div>
