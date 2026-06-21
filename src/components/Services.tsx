@@ -3,37 +3,37 @@ import { motion } from 'framer-motion'
 const categories = [
   {
     number: '01',
-    title: 'Creative',
+    title: 'Kreativ',
     services: [
       {
         name: 'UI/UX Design',
-        desc: 'User-centered interfaces that balance aesthetics with functionality.',
+        desc: 'Nutzerzentrierte Interfaces, die Ästhetik und Funktion verbinden.',
       },
       {
         name: '3D Design',
-        desc: 'Dimensional brand assets and immersive visual experiences.',
+        desc: 'Dreidimensionale Markenelemente und immersive Visualisierungen.',
       },
       {
         name: 'Brand Identity',
-        desc: 'Complete visual systems that define and differentiate.',
+        desc: 'Visuelle Systeme, die Marken definieren und differenzieren.',
       },
     ],
   },
   {
     number: '02',
-    title: 'Engineering',
+    title: 'Technologie',
     services: [
       {
-        name: 'AI Dashboards',
-        desc: 'Intelligent data visualization and decision-support interfaces.',
+        name: 'KPI-Dashboards',
+        desc: 'Datengetriebene Visualisierungen, die Marketing-Performance sichtbar machen.',
       },
       {
-        name: 'Automation (n8n)',
-        desc: 'Complex workflow automation that eliminates manual processes.',
+        name: 'Marketing Automation',
+        desc: 'Python-Skripte und API-Anbindungen, die manuelle Prozesse eliminieren.',
       },
       {
-        name: 'Serverless (AWS)',
-        desc: 'Scalable cloud functions and backend architecture.',
+        name: 'Performance Marketing',
+        desc: 'Google Ads, Meta Ads und datenbasierte Kampagnensteuerung.',
       },
     ],
   },
@@ -68,7 +68,7 @@ export default function Services() {
       >
         <div className="h-2 w-2 rounded-full bg-accent" />
         <span className="font-body text-xs uppercase tracking-[0.3em] text-content-tertiary">
-          Services
+          Leistungen
         </span>
       </motion.div>
 

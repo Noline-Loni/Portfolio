@@ -53,7 +53,7 @@ export default function CustomCursor() {
       {/* Dot */}
       <motion.div
         className="pointer-events-none fixed left-0 top-0 z-[10000] mix-blend-difference"
-        style={{ x: cursorX, y: cursorY }}
+        style={{ x: cursorX, y: cursorY, willChange: 'transform' }}
       >
         <motion.div
           className="rounded-full bg-content"
@@ -66,7 +66,7 @@ export default function CustomCursor() {
       {/* Ring */}
       <motion.div
         className="pointer-events-none fixed left-0 top-0 z-[10000] mix-blend-difference"
-        style={{ x: ringX, y: ringY }}
+        style={{ x: ringX, y: ringY, willChange: 'transform' }}
       >
         <motion.div
           className="rounded-full border border-content"

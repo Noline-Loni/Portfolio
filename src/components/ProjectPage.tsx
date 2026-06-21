@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { getProject, getNextProject } from '../data/projects'
+import Seo, { SITE_URL } from './Seo'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -42,6 +43,10 @@ export default function ProjectPage() {
   if (!project) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-surface">
+        <Seo
+          title="Projekt nicht gefunden — Noline Lindor"
+          description="Diese Seite existiert nicht."
+        />
         <div className="text-center">
           <h1 className="font-display text-4xl text-content">
             Projekt nicht gefunden
@@ -57,28 +62,71 @@ export default function ProjectPage() {
     )
   }
 
+  const isAutomation = project.kind === 'automation'
+  const hasCover = !!project.cover
+  const canonicalPath = `/project/${project.slug}`
+  const projectLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: project.title,
+    headline: `${project.title} — ${project.subtitle}`,
+    abstract: project.intro,
+    about: project.category,
+    keywords: project.tags.join(', '),
+    dateCreated: project.year,
+    inLanguage: 'de',
+    author: { '@type': 'Person', name: 'Noline Lindor', url: SITE_URL },
+    url: `${SITE_URL}${canonicalPath}`,
+    ...(project.cover ? { image: `${SITE_URL}${project.cover}` } : {}),
+  }
+
   // Count text sections for chapter numbering
   let chapterIndex = 0
 
   return (
     <div className="min-h-screen bg-surface">
-      {/* ═══════════════ PARALLAX HERO ═══════════════ */}
+      <Seo
+        title={`${project.title} — ${project.subtitle} · Noline Lindor`}
+        description={project.intro}
+        path={canonicalPath}
+        image={project.cover}
+        type="article"
+        jsonLd={projectLd}
+      />
+      {/* ═══════════════ HERO ═══════════════ */}
       <section ref={heroRef} className="relative h-screen overflow-hidden">
-        {/* Fixed-like parallax background image */}
-        <motion.div
-          className="absolute inset-0"
-          style={{ y: heroY, scale: heroScale }}
-        >
-          <img
-            src={project.cover}
-            alt={project.title}
-            className={`h-full w-full object-cover ${project.coverPosition || 'object-center'}`}
+        {/* Background: cover image (with parallax) or gradient stage fallback */}
+        {hasCover ? (
+          <motion.div
+            className="absolute inset-0"
+            style={{ y: heroY, scale: heroScale }}
+          >
+            <img
+              src={project.cover}
+              alt={project.coverAlt || project.title}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              className={`h-full w-full object-cover ${project.coverPosition || 'object-center'}`}
+            />
+          </motion.div>
+        ) : (
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                'radial-gradient(120% 95% at 50% 0%, #3B3B3B 0%, #2B2B2B 55%, #1F1F1F 100%)',
+            }}
           />
-        </motion.div>
+        )}
 
-        {/* Gradient overlays */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent" />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-surface/40 to-transparent" />
+        {/* Gradient overlays (when a cover image is present) */}
+        {hasCover && (
+          <>
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-surface/40 to-transparent" />
+          </>
+        )}
 
         {/* Hero content — pinned to bottom */}
         <div className="absolute inset-0 flex flex-col justify-end px-6 pb-16 md:px-12 md:pb-24 lg:px-24">
@@ -94,6 +142,22 @@ export default function ProjectPage() {
               {project.title}
             </h1>
           </motion.div>
+
+          {isAutomation && project.heroMetric && (
+            <motion.div
+              className="mt-8 flex items-end gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <span className="font-display text-5xl leading-none text-accent md:text-7xl">
+                {project.heroMetric.value}
+              </span>
+              <span className="mb-1 max-w-[12rem] font-body text-sm leading-snug text-content-tertiary">
+                {project.heroMetric.label}
+              </span>
+            </motion.div>
+          )}
 
           <motion.div
             className="mt-10 flex flex-wrap items-center gap-8"
@@ -225,6 +289,8 @@ export default function ProjectPage() {
                   <motion.img
                     src={section.src}
                     alt={section.alt || ''}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full"
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -252,6 +318,8 @@ export default function ProjectPage() {
                     <motion.img
                       src={img.src}
                       alt={img.alt}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full"
                       whileHover={{ scale: 1.02 }}
                       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -259,6 +327,179 @@ export default function ProjectPage() {
                   </motion.div>
                 ))}
               </div>
+            </section>
+          )
+        }
+
+        if (section.type === 'metrics') {
+          return (
+            <section key={i} className="px-6 pb-20 md:px-12 md:pb-28 lg:px-24">
+              <div className="mx-auto grid max-w-5xl grid-cols-2 gap-4 md:grid-cols-4">
+                {section.metrics?.map((m, j) => (
+                  <motion.div
+                    key={j}
+                    className="rounded-lg bg-surface-secondary p-5 md:p-6"
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: '-60px' }}
+                    custom={j * 0.4}
+                  >
+                    <div className="font-display text-3xl text-accent md:text-4xl">
+                      {m.value}
+                    </div>
+                    <div className="mt-2 font-body text-xs leading-snug text-content-tertiary md:text-sm">
+                      {m.label}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </section>
+          )
+        }
+
+        if (section.type === 'before-after') {
+          return (
+            <section key={i} className="px-6 pb-20 md:px-12 md:pb-28 lg:px-24">
+              <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-2">
+                <motion.div
+                  className="rounded-lg bg-surface-secondary p-6 md:p-8"
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: '-60px' }}
+                  custom={0}
+                >
+                  <div className="mb-3 font-body text-[10px] uppercase tracking-[0.2em] text-content-tertiary">
+                    Vorher
+                  </div>
+                  <p className="font-body text-sm leading-relaxed text-content-secondary md:text-base">
+                    {section.before}
+                  </p>
+                </motion.div>
+                <motion.div
+                  className="rounded-lg bg-surface-secondary p-6 md:p-8"
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: '-60px' }}
+                  custom={0.4}
+                >
+                  <div className="mb-3 font-body text-[10px] uppercase tracking-[0.2em] text-accent">
+                    Nachher
+                  </div>
+                  <p className="font-body text-sm leading-relaxed text-content-secondary md:text-base">
+                    {section.after}
+                  </p>
+                </motion.div>
+              </div>
+            </section>
+          )
+        }
+
+        if (section.type === 'process') {
+          return (
+            <section key={i} className="px-6 pb-20 md:px-12 md:pb-28 lg:px-24">
+              <div className="mx-auto max-w-5xl">
+                {section.heading && (
+                  <h2 className="mb-8 font-display text-2xl tracking-[-0.01em] text-accent md:text-3xl">
+                    {section.heading}
+                  </h2>
+                )}
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                  {section.steps?.map((s, j) => (
+                    <motion.div
+                      key={j}
+                      className="rounded-lg border border-stroke-subtle/60 p-5"
+                      variants={fadeUp}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, margin: '-60px' }}
+                      custom={j * 0.3}
+                    >
+                      <div className="font-body text-xs tabular-nums text-accent/70">
+                        {String(j + 1).padStart(2, '0')}
+                      </div>
+                      <h3 className="mt-2 font-display text-lg text-content">
+                        {s.title}
+                      </h3>
+                      <p className="mt-2 font-body text-sm leading-relaxed text-content-tertiary">
+                        {s.desc}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )
+        }
+
+        if (section.type === 'code') {
+          return (
+            <section key={i} className="px-6 pb-20 md:px-12 md:pb-28 lg:px-24">
+              <motion.div
+                className="mx-auto max-w-5xl overflow-hidden rounded-lg border border-stroke-subtle/60 bg-surface-deep"
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-60px' }}
+                custom={0}
+              >
+                {section.caption && (
+                  <div className="flex items-center gap-2 border-b border-stroke-subtle/60 px-5 py-3">
+                    <span className="h-2.5 w-2.5 rounded-full bg-accent/70" />
+                    <span className="font-mono text-xs text-content-tertiary">
+                      {section.caption}
+                    </span>
+                  </div>
+                )}
+                <pre className="overflow-x-auto px-5 py-5 font-mono text-[13px] leading-[1.7] text-content-secondary">
+                  <code>{section.code}</code>
+                </pre>
+              </motion.div>
+            </section>
+          )
+        }
+
+        if (section.type === 'tech-stack') {
+          return (
+            <section key={i} className="px-6 pb-20 md:px-12 md:pb-28 lg:px-24">
+              <div className="mx-auto max-w-5xl">
+                {section.heading && (
+                  <h2 className="mb-6 font-display text-2xl tracking-[-0.01em] text-accent md:text-3xl">
+                    {section.heading}
+                  </h2>
+                )}
+                <div className="flex flex-wrap gap-3">
+                  {section.stack?.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-md bg-accent/10 px-4 py-2 font-body text-xs uppercase tracking-[0.1em] text-accent"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )
+        }
+
+        if (section.type === 'quote') {
+          return (
+            <section key={i} className="px-6 pb-20 md:px-12 md:pb-28 lg:px-24">
+              <motion.blockquote
+                className="mx-auto max-w-4xl text-center"
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-60px' }}
+                custom={0}
+              >
+                <p className="font-display text-2xl leading-[1.4] tracking-[-0.01em] text-content md:text-4xl">
+                  &bdquo;{section.content}&ldquo;
+                </p>
+              </motion.blockquote>
             </section>
           )
         }

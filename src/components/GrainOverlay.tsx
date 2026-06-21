@@ -3,6 +3,7 @@ export default function GrainOverlay() {
     <svg
       className="pointer-events-none fixed inset-0 z-[9999] h-full w-full opacity-[0.035]"
       aria-hidden="true"
+      style={{ transform: 'translateZ(0)' }}
     >
       <filter id="grain">
         <feTurbulence

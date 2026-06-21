@@ -16,7 +16,7 @@ export default function GameSection() {
       >
         <div className="h-2 w-2 rounded-full bg-accent" />
         <span className="font-body text-xs uppercase tracking-[0.3em] text-content-tertiary">
-          Take a Break
+          Pause machen
         </span>
       </motion.div>
 
@@ -80,7 +80,7 @@ export default function GameSection() {
                   {/* Play button overlay */}
                   <div className="absolute inset-0 z-[4] flex items-center justify-center bg-black/30 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <span className="rounded-sm bg-accent px-5 py-2.5 font-body text-xs uppercase tracking-[0.2em] text-surface">
-                      Play Game
+                      Spiel starten
                     </span>
                   </div>
                 </div>

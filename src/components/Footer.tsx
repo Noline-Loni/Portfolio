@@ -81,9 +81,9 @@ export default function Footer() {
         animate={{ color: isHovered ? '#353535' : undefined }}
         transition={{ duration: 0.6, delay: isHovered ? 0.4 : 0 }}
       >
-        <AnimatedChars text="Let's build" />
+        <AnimatedChars text="Lass uns etwas" />
         <br />
-        <AnimatedChars text="the future." />
+        <AnimatedChars text="Großes bauen." />
       </motion.h2>
 
       {/* CTA Button */}
@@ -114,7 +114,7 @@ export default function Footer() {
           border: '2px solid transparent',
         }}
       >
-        Start a<br />Project
+        Projekt<br />starten
       </motion.a>
 
       {/* Bottom row */}

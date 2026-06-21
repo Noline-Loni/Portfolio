@@ -4,10 +4,10 @@ import { Link, useLocation } from 'react-router-dom'
 import { projects } from '../data/projects'
 
 const links = [
-  { label: 'Work', href: '/#work' },
-  { label: 'Services', href: '/#services' },
-  { label: 'About', href: '/#about' },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Projekte', href: '/#work' },
+  { label: 'Leistungen', href: '/#services' },
+  { label: 'Über mich', href: '/#about' },
+  { label: 'Kontakt', href: '/#contact' },
 ]
 
 export default function Navbar() {
@@ -85,7 +85,7 @@ export default function Navbar() {
         {/* Desktop links */}
         <div className="hidden items-center gap-10 md:flex">
           {links.map((link) =>
-            link.label === 'Work' ? (
+            link.label === 'Projekte' ? (
               <div
                 key={link.label}
                 className="relative"
@@ -180,7 +180,7 @@ export default function Navbar() {
                 }}
                 className="w-full"
               >
-                {link.label === 'Work' ? (
+                {link.label === 'Projekte' ? (
                   <div>
                     <button
                       onClick={() => setMobileWorkOpen(!mobileWorkOpen)}
