@@ -1,4 +1,26 @@
 User-agent: *
 Allow: /
 
+# AI / generative-search crawlers — explicitly welcome (GEO visibility)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://nolinelindor.com/sitemap.xml

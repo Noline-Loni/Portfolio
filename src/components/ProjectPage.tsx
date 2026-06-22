@@ -2,7 +2,8 @@ import { useEffect, useRef } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { getProject, getNextProject } from '../data/projects'
-import Seo, { SITE_URL } from './Seo'
+import Seo from './Seo'
+import { creativeWorkLd, breadcrumbLd } from '../lib/structuredData'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -65,20 +66,6 @@ export default function ProjectPage() {
   const isAutomation = project.kind === 'automation'
   const hasCover = !!project.cover
   const canonicalPath = `/project/${project.slug}`
-  const projectLd = {
-    '@context': 'https://schema.org',
-    '@type': 'CreativeWork',
-    name: project.title,
-    headline: `${project.title} — ${project.subtitle}`,
-    abstract: project.intro,
-    about: project.category,
-    keywords: project.tags.join(', '),
-    dateCreated: project.year,
-    inLanguage: 'de',
-    author: { '@type': 'Person', name: 'Noline Lindor', url: SITE_URL },
-    url: `${SITE_URL}${canonicalPath}`,
-    ...(project.cover ? { image: `${SITE_URL}${project.cover}` } : {}),
-  }
 
   // Count text sections for chapter numbering
   let chapterIndex = 0
@@ -91,7 +78,7 @@ export default function ProjectPage() {
         path={canonicalPath}
         image={project.cover}
         type="article"
-        jsonLd={projectLd}
+        jsonLd={[creativeWorkLd(project), breadcrumbLd(project)]}
       />
       {/* ═══════════════ HERO ═══════════════ */}
       <section ref={heroRef} className="relative h-screen overflow-hidden">
