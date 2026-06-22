@@ -620,7 +620,7 @@ registry.register({
     cover: '/images/works/automation/meta-campaigns.webp',
     coverAlt:
       'Abstrakte Visualisierung: eine Master-Anzeige vervielfältigt sich über Koralle-Flusslinien in ein Raster vieler identischer Ad-Set-Kopien',
-    heroMetric: { value: '~12 h → 0', label: 'manuelle Arbeit pro Monat' },
+    heroMetric: { value: '~12 h → 2 h', label: 'manuelle Arbeit pro Monat' },
     tags: ['Python', 'Meta Marketing API', 'facebook-business', 'REST'],
     intro:
       'Jeden Monat mussten für einen Pflegekonzern mit über 100 Standorten hunderte Ad-Sets von Hand in Meta angelegt werden — ein wiederkehrender, fehleranfälliger Prozess von rund 12 Stunden. Ein Python-Skript über die Meta Marketing API erledigt das jetzt vollautomatisch.',
@@ -628,10 +628,10 @@ registry.register({
       {
         type: 'metrics',
         metrics: [
-          { value: '~12 h → 0', label: 'manuelle Arbeit pro Monat' },
+          { value: '~12 h → 2 h', label: 'manuelle Arbeit pro Monat' },
           { value: '100+', label: 'Standorte je Lauf' },
           { value: '1', label: 'Skript statt hunderter Klicks' },
-          { value: 'monatlich', label: 'vollautomatischer Lauf' },
+          { value: '1×', label: 'vollautomatischer Lauf pro Monat' },
         ],
       },
       {

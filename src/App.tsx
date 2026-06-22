@@ -15,17 +15,22 @@ import GameSection from './components/GameSection'
 import ProjectPage from './components/ProjectPage'
 import Seo, { SITE_URL } from './components/Seo'
 import CookieConsent from './components/CookieConsent'
+import BackToTop from './components/BackToTop'
+import { setLenis, scrollToTop } from './lib/scroll'
 
-function ScrollToHash() {
-  const { hash } = useLocation()
+function ScrollManager() {
+  const { pathname, hash } = useLocation()
   useEffect(() => {
     if (hash) {
       const el = document.querySelector(hash)
       if (el) {
         setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100)
       }
+    } else {
+      // Plain navigation (e.g. logo → home, or opening a project) lands at the top
+      scrollToTop({ immediate: true })
     }
-  }, [hash])
+  }, [pathname, hash])
   return null
 }
 
@@ -112,8 +117,10 @@ function AppContent() {
     }
 
     requestAnimationFrame(raf)
+    setLenis(lenis)
 
     return () => {
+      setLenis(null)
       lenis.destroy()
     }
   }, [])
@@ -123,12 +130,13 @@ function AppContent() {
       <CustomCursor />
       <GrainOverlay />
       <Navbar />
-      <ScrollToHash />
+      <ScrollManager />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/project/:slug" element={<ProjectPage />} />
       </Routes>
       <CookieConsent />
+      <BackToTop />
     </>
   )
 }

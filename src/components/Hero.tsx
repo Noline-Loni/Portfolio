@@ -70,7 +70,7 @@ export default function Hero() {
               text="Marketing"
               className="text-content"
               startIndex={2}
-            />{' '}
+            />
             <AnimatedWords
               text="Automation."
               className="text-accent"

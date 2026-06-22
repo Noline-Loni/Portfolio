@@ -105,7 +105,6 @@ export default function ProjectPage() {
               src={project.cover}
               alt={project.coverAlt || project.title}
               loading="eager"
-              fetchPriority="high"
               decoding="async"
               className={`h-full w-full object-cover ${project.coverPosition || 'object-center'}`}
             />
@@ -120,11 +119,12 @@ export default function ProjectPage() {
           />
         )}
 
-        {/* Gradient overlays (when a cover image is present) */}
+        {/* Gradient overlays — bottom-weighted so the image stays vivid up top
+            and only darkens behind the headline for legibility */}
         {hasCover && (
           <>
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-transparent" />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-surface/40 to-transparent" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-surface via-surface/80 via-28% to-transparent to-72%" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-surface/35 to-transparent to-40%" />
           </>
         )}
 
@@ -338,14 +338,14 @@ export default function ProjectPage() {
                 {section.metrics?.map((m, j) => (
                   <motion.div
                     key={j}
-                    className="rounded-lg bg-surface-secondary p-5 md:p-6"
+                    className="min-w-0 rounded-lg bg-surface-secondary p-5 md:p-6"
                     variants={fadeUp}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: '-60px' }}
                     custom={j * 0.4}
                   >
-                    <div className="font-display text-3xl text-accent md:text-4xl">
+                    <div className="font-display text-3xl text-accent [overflow-wrap:anywhere] md:text-4xl">
                       {m.value}
                     </div>
                     <div className="mt-2 font-body text-xs leading-snug text-content-tertiary md:text-sm">

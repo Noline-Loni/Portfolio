@@ -2,10 +2,11 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
 import { projects } from '../data/projects'
+import { scrollToTop } from '../lib/scroll'
 
 const links = [
-  { label: 'Projekte', href: '/#work' },
   { label: 'Leistungen', href: '/#services' },
+  { label: 'Projekte', href: '/#work' },
   { label: 'Über mich', href: '/#about' },
   { label: 'Kontakt', href: '/#contact' },
 ]
@@ -62,7 +63,18 @@ export default function Navbar() {
         }`}
       >
         {/* Logo */}
-        <Link to="/" className="relative z-50" data-hover>
+        <Link
+          to="/"
+          className="relative z-50"
+          data-hover
+          onClick={(e) => {
+            setMenuOpen(false)
+            if (location.pathname === '/') {
+              e.preventDefault()
+              scrollToTop()
+            }
+          }}
+        >
           <svg
             viewBox="0 0 1366 768"
             className="h-6 w-auto fill-content md:h-7"
