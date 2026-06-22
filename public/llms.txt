@@ -1,0 +1,22 @@
+# Noline Lindor — Creative Technologist
+
+> Noline Lindor ist Creative Technologist an der Schnittstelle von Design, Marketing und Technologie. Sie gestaltet Interfaces und Kampagnen — und baut die Automatisierung dahinter (Python, Meta Marketing API, Google Ads Scripts, KPI-Dashboards). Sitz in Bochum, Deutschland; arbeitet remote.
+
+## Leistungen
+- UI/UX Design, Brand Identity, 3D-Visualisierung
+- Marketing Automation (Python, Meta Marketing API, Google Ads Scripts)
+- Performance Marketing (Google Ads, Meta Ads)
+- Datengetriebene KPI-Dashboards (Node.js, PostgreSQL, React)
+
+## Projekte (Case Studies)
+- [QR-Code-Stellencheck](https://nolinelindor.com/project/qr-stellencheck): Python-Workflow prüft 200+ QR-Codes wöchentlich auf abgelaufene Stellenanzeigen — 199 tote Codes im ersten Lauf entdeckt.
+- [Meta-Kampagnen-Automation](https://nolinelindor.com/project/meta-campaigns): Python + Meta Marketing API erzeugen Kampagnen und Ad-Sets über 100+ Standorte — ~12 h manuelle Arbeit pro Monat auf ~2 h reduziert.
+- [InDesign-Print-Automation](https://nolinelindor.com/project/indesign-automation): Daten-Merge und GREP erzeugen 30 standortindividuelle Plakate in 20 statt 240 Minuten.
+- [KPI-Dashboard](https://nolinelindor.com/project/kpi-dashboard): Full-Stack-Dashboard konsolidiert HubSpot, LinkedIn und Web-Analytics in einer Quelle (Node.js, Fastify, PostgreSQL, React).
+- [Luba Labs](https://nolinelindor.com/project/luba-labs), [Cremas Lakay](https://nolinelindor.com/project/cremas-lakay), [Haiti-Med e.V.](https://nolinelindor.com/project/haiti-med), [NUTRITIONfurPETS](https://nolinelindor.com/project/nutrition-pets): Brand-Identity- und UX-Design-Projekte.
+
+## Kontakt
+- Website: https://nolinelindor.com
+- E-Mail: nolinelindor@gmail.com
+- LinkedIn: https://www.linkedin.com/in/noline-lindor-43b923213
+- GitHub: https://github.com/Noline-Loni

@@ -1,14 +1,13 @@
 import { Helmet } from 'react-helmet-async'
+import { SITE_URL, SITE_NAME } from '../lib/site'
 
-export const SITE_URL = 'https://nolinelindor.com'
-export const SITE_NAME = 'Noline Lindor'
+export { SITE_URL, SITE_NAME }
 
 interface SeoProps {
   title: string
   description: string
-  /** Route path, e.g. '/project/qr-stellencheck'. Empty string = home. */
+  /** Route path, e.g. '/project/qr-stellencheck'. Empty string = home ('/'). */
   path?: string
-  /** Absolute or site-relative image URL for social sharing. */
   image?: string
   type?: 'website' | 'article'
   jsonLd?: object | object[]
@@ -22,7 +21,9 @@ export default function Seo({
   type = 'website',
   jsonLd,
 }: SeoProps) {
-  const url = `${SITE_URL}${path}`
+  // Normalise home to a trailing slash so the runtime canonical matches the
+  // prerendered one exactly (avoids conflicting canonicals).
+  const url = `${SITE_URL}${path || '/'}`
   const img = image
     ? image.startsWith('http')
       ? image

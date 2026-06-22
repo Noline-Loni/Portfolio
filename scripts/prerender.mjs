@@ -1,110 +1,67 @@
 // Post-build prerender: writes a static index.html per route with the correct
-// <title>, description, canonical, Open Graph / Twitter tags and JSON-LD.
-// The SPA still hydrates and renders the body — this gives crawlers and social
-// scrapers correct per-route markup without a full SSR/SSG framework.
+// <title>, description, canonical, Open Graph / Twitter tags and JSON-LD, and
+// generates sitemap.xml. The SPA still hydrates and renders the body — this
+// gives crawlers and AI/social scrapers correct per-route markup without SSR.
 //
-// Project data is imported from src/data/projects.ts (single source of truth)
-// by transpiling it with esbuild (already a Vite dependency).
+// All data + structured-data builders come from src/lib/structuredData.ts
+// (single source of truth), transpiled with esbuild (a Vite dependency).
 
 import { build } from 'esbuild'
 import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { pathToFileURL } from 'node:url'
 
-const SITE_URL = 'https://nolinelindor.com'
-const SITE_NAME = 'Noline Lindor'
 const DIST = resolve('dist')
 
-// --- 1. Import the project list from TS via esbuild ---
+// --- 1. Bundle the shared data/structured-data module and import it ---
 const bundled = await build({
-  entryPoints: ['src/data/projects.ts'],
+  entryPoints: ['src/lib/structuredData.ts'],
   bundle: true,
   format: 'esm',
   write: false,
   platform: 'node',
 })
-const tmp = resolve(DIST, '_projects.mjs')
+const tmp = resolve(DIST, '_seo-data.mjs')
 writeFileSync(tmp, bundled.outputFiles[0].text)
-const { projects } = await import(pathToFileURL(tmp).href)
+const {
+  SITE_URL,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_DESCRIPTION,
+  projects,
+  personLd,
+  websiteLd,
+  faqLd,
+  creativeWorkLd,
+  breadcrumbLd,
+} = await import(pathToFileURL(tmp).href)
 rmSync(tmp)
 
-// --- 2. Shared structured data ---
-const personLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Noline Lindor',
-  jobTitle: 'Creative Technologist',
-  url: SITE_URL,
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Bochum',
-    addressCountry: 'DE',
-  },
-  knowsAbout: [
-    'UI/UX Design',
-    'Marketing Automation',
-    'Performance Marketing',
-    'Python',
-    'Meta Marketing API',
-    'Google Ads',
-    'SEO',
-    'React',
-    'Brand Identity',
-  ],
-  sameAs: [
-    'https://www.linkedin.com/in/noline-lindor-43b923213',
-    'https://github.com/Noline-Loni',
-    'https://www.instagram.com/noline_lindor',
-    'https://www.facebook.com/noline.lindor',
-  ],
-}
-
-const websiteLd = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: SITE_NAME,
-  url: SITE_URL,
-}
-
-const creativeWorkLd = (p) => ({
-  '@context': 'https://schema.org',
-  '@type': 'CreativeWork',
-  name: p.title,
-  headline: `${p.title} — ${p.subtitle}`,
-  abstract: p.intro,
-  about: p.category,
-  keywords: p.tags.join(', '),
-  dateCreated: p.year,
-  inLanguage: 'de',
-  author: { '@type': 'Person', name: 'Noline Lindor', url: SITE_URL },
-  url: `${SITE_URL}/project/${p.slug}`,
-  ...(p.cover ? { image: `${SITE_URL}${p.cover}` } : {}),
-})
-
-// --- 3. Build the route table ---
-const HOME_DESC =
-  'Creative Technologist an der Schnittstelle von Design, Marketing und Technologie. UI/UX Design, Marketing Automation & KPI-Dashboards.'
-
+// --- 2. Route table ---
 const routes = [
   {
     path: '/',
-    title: 'Noline Lindor — Creative Technologist',
-    description: HOME_DESC,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     type: 'website',
     image: '/og-image.jpg',
-    jsonLd: [personLd, websiteLd],
+    priority: '1.0',
+    changefreq: 'monthly',
+    jsonLd: [personLd, websiteLd, faqLd],
   },
   ...projects.map((p) => ({
     path: `/project/${p.slug}`,
-    title: `${p.title} — ${p.subtitle} · Noline Lindor`,
+    title: `${p.title} — ${p.subtitle} · ${SITE_NAME}`,
     description: p.intro,
     type: 'article',
     image: p.cover || null,
-    jsonLd: [creativeWorkLd(p)],
+    priority: '0.8',
+    changefreq: 'yearly',
+    jsonLd: [creativeWorkLd(p), breadcrumbLd(p)],
   })),
 ]
 
-// --- 4. Render ---
+// --- 3. Per-route static HTML ---
 const template = readFileSync(resolve(DIST, 'index.html'), 'utf8')
 
 const esc = (s) =>
@@ -114,45 +71,57 @@ const esc = (s) =>
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
 
+// Tags carry data-rh="true" so react-helmet-async adopts (reconciles) them on
+// hydration instead of appending duplicates.
 function headTags(route) {
   const url = SITE_URL + route.path
   const img = route.image ? SITE_URL + route.image : null
-  const tags = [
-    `<meta name="description" content="${esc(route.description)}" />`,
-    `<link rel="canonical" href="${url}" />`,
-    `<meta property="og:type" content="${route.type}" />`,
-    `<meta property="og:site_name" content="${SITE_NAME}" />`,
-    `<meta property="og:title" content="${esc(route.title)}" />`,
-    `<meta property="og:description" content="${esc(route.description)}" />`,
-    `<meta property="og:url" content="${url}" />`,
-    ...(img ? [`<meta property="og:image" content="${img}" />`] : []),
-    `<meta name="twitter:card" content="${img ? 'summary_large_image' : 'summary'}" />`,
-    `<meta name="twitter:title" content="${esc(route.title)}" />`,
-    `<meta name="twitter:description" content="${esc(route.description)}" />`,
-    ...(img ? [`<meta name="twitter:image" content="${img}" />`] : []),
+  return [
+    `<meta name="description" content="${esc(route.description)}" data-rh="true" />`,
+    `<link rel="canonical" href="${url}" data-rh="true" />`,
+    `<meta property="og:type" content="${route.type}" data-rh="true" />`,
+    `<meta property="og:site_name" content="${SITE_NAME}" data-rh="true" />`,
+    `<meta property="og:title" content="${esc(route.title)}" data-rh="true" />`,
+    `<meta property="og:description" content="${esc(route.description)}" data-rh="true" />`,
+    `<meta property="og:url" content="${url}" data-rh="true" />`,
+    ...(img ? [`<meta property="og:image" content="${img}" data-rh="true" />`] : []),
+    `<meta name="twitter:card" content="${img ? 'summary_large_image' : 'summary'}" data-rh="true" />`,
+    `<meta name="twitter:title" content="${esc(route.title)}" data-rh="true" />`,
+    `<meta name="twitter:description" content="${esc(route.description)}" data-rh="true" />`,
+    ...(img ? [`<meta name="twitter:image" content="${img}" data-rh="true" />`] : []),
     ...route.jsonLd.map(
-      (b) => `<script type="application/ld+json">${JSON.stringify(b)}</script>`
+      (b) =>
+        `<script type="application/ld+json" data-rh="true">${JSON.stringify(b)}</script>`
     ),
-  ]
-  return tags.join('\n    ')
-}
-
-function renderRoute(route) {
-  let html = template.replace(
-    /<title>[\s\S]*?<\/title>/,
-    `<title>${esc(route.title)}</title>`
-  )
-  html = html.replace('</head>', `    ${headTags(route)}\n  </head>`)
-  return html
+  ].join('\n    ')
 }
 
 for (const route of routes) {
+  const html = template
+    .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(route.title)}</title>`)
+    .replace('</head>', `    ${headTags(route)}\n  </head>`)
   const outPath =
     route.path === '/'
       ? resolve(DIST, 'index.html')
       : resolve(DIST, route.path.replace(/^\//, ''), 'index.html')
   mkdirSync(dirname(outPath), { recursive: true })
-  writeFileSync(outPath, renderRoute(route))
+  writeFileSync(outPath, html)
 }
 
-console.log(`✓ Prerendered ${routes.length} routes (1 home + ${projects.length} projects)`)
+// --- 4. sitemap.xml (with current lastmod) ---
+const lastmod = new Date().toISOString().slice(0, 10)
+const sitemap =
+  `<?xml version="1.0" encoding="UTF-8"?>\n` +
+  `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+  routes
+    .map(
+      (r) =>
+        `  <url>\n    <loc>${SITE_URL}${r.path}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${r.changefreq}</changefreq>\n    <priority>${r.priority}</priority>\n  </url>`
+    )
+    .join('\n') +
+  `\n</urlset>\n`
+writeFileSync(resolve(DIST, 'sitemap.xml'), sitemap)
+
+console.log(
+  `✓ Prerendered ${routes.length} routes + sitemap.xml (lastmod ${lastmod})`
+)

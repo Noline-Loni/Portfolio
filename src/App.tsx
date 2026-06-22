@@ -13,10 +13,13 @@ import GrainOverlay from './components/GrainOverlay'
 import Gallery3D from './components/Gallery3D'
 import GameSection from './components/GameSection'
 import ProjectPage from './components/ProjectPage'
-import Seo, { SITE_URL } from './components/Seo'
+import Seo from './components/Seo'
+import FAQ from './components/FAQ'
 import CookieConsent from './components/CookieConsent'
 import BackToTop from './components/BackToTop'
 import { setLenis, scrollToTop } from './lib/scroll'
+import { SITE_TITLE, SITE_DESCRIPTION } from './lib/site'
+import { personLd, websiteLd, faqLd } from './lib/structuredData'
 
 function ScrollManager() {
   const { pathname, hash } = useLocation()
@@ -34,51 +37,14 @@ function ScrollManager() {
   return null
 }
 
-const personLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Noline Lindor',
-  jobTitle: 'Creative Technologist',
-  url: SITE_URL,
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Bochum',
-    addressCountry: 'DE',
-  },
-  knowsAbout: [
-    'UI/UX Design',
-    'Marketing Automation',
-    'Performance Marketing',
-    'Python',
-    'Meta Marketing API',
-    'Google Ads',
-    'SEO',
-    'React',
-    'Brand Identity',
-  ],
-  sameAs: [
-    'https://www.linkedin.com/in/noline-lindor-43b923213',
-    'https://github.com/Noline-Loni',
-    'https://www.instagram.com/noline_lindor',
-    'https://www.facebook.com/noline.lindor',
-  ],
-}
-
-const websiteLd = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'Noline Lindor',
-  url: SITE_URL,
-}
-
 function HomePage() {
   return (
     <>
       <Seo
-        title="Noline Lindor — Creative Technologist"
-        description="Creative Technologist an der Schnittstelle von Design, Marketing und Technologie. UI/UX Design, Marketing Automation & KPI-Dashboards."
+        title={SITE_TITLE}
+        description={SITE_DESCRIPTION}
         image="/og-image.jpg"
-        jsonLd={[personLd, websiteLd]}
+        jsonLd={[personLd, websiteLd, faqLd]}
       />
       {/* Depth stage — fixed ambient gradient (brand #1F1F1F → #353535) behind all
           sections to give the page depth instead of a flat single tone */}
@@ -98,6 +64,7 @@ function HomePage() {
         <Gallery3D />
         <GameSection />
         <About />
+        <FAQ />
       </main>
       <Footer />
     </>
