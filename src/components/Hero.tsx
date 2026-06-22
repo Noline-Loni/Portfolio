@@ -1,8 +1,7 @@
-import { Suspense } from 'react'
-import { Canvas } from '@react-three/fiber'
-import { Environment } from '@react-three/drei'
+import { Suspense, lazy } from 'react'
 import { motion } from 'framer-motion'
-import Logo3D from './Logo3D'
+
+const Hero3D = lazy(() => import('./Hero3D'))
 
 const wordVariants = {
   hidden: { y: '110%', opacity: 0 },
@@ -48,40 +47,10 @@ function AnimatedWords({
 export default function Hero() {
   return (
     <section className="relative h-screen overflow-hidden" id="hero">
-      {/* 3D Canvas */}
+      {/* 3D Canvas (lazy-loaded so three.js stays out of the initial bundle) */}
       <div className="absolute inset-0 z-0">
         <Suspense fallback={null}>
-          <Canvas
-            camera={{ position: [0, 0, 1], fov: 40 }}
-            gl={{ antialias: true, alpha: true }}
-            dpr={[1, 2]}
-          >
-            <ambientLight intensity={0.5} />
-            <directionalLight
-              position={[5, 5, 5]}
-              intensity={2}
-              color="#F5F5EF"
-            />
-            {/* Key light from front-left for visibility */}
-            <directionalLight
-              position={[-3, 2, 4]}
-              intensity={1.5}
-              color="#E8E8E0"
-            />
-            {/* Accent rim light from behind */}
-            <pointLight
-              position={[-3, -2, -4]}
-              intensity={1.2}
-              color="#FB7751"
-            />
-            <pointLight
-              position={[3, 3, -3]}
-              intensity={0.6}
-              color="#FB7751"
-            />
-            <Environment preset="city" />
-            <Logo3D />
-          </Canvas>
+          <Hero3D />
         </Suspense>
       </div>
 
@@ -95,10 +64,10 @@ export default function Hero() {
       <div className="relative z-10 flex h-full flex-col justify-end px-6 pb-20 md:px-12 md:pb-28 lg:px-24 lg:pb-32">
         <div className="max-w-5xl">
           <h1 className="font-display text-display leading-[0.95] tracking-[-0.02em]">
-            <AnimatedWords text="Design meets" />
+            <AnimatedWords text="Design trifft" />
             <br />
             <AnimatedWords
-              text="Deep"
+              text="Marketing"
               className="text-content"
               startIndex={2}
             />{' '}
@@ -119,9 +88,9 @@ export default function Hero() {
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-            Noline Lindor — UI/UX Design, AI Integrations{' '}
+            Noline Lindor — Design, Marketing-Automatisierung{' '}
             <br className="hidden md:block" />
-            &amp; Full-Stack Automation.
+            &amp; datengetriebene Dashboards.
           </motion.p>
 
           {/* CTAs */}
@@ -140,14 +109,14 @@ export default function Hero() {
               className="inline-flex items-center justify-center rounded-sm bg-accent px-8 py-3.5 font-body text-xs font-bold uppercase tracking-[0.15em] text-surface transition-all duration-base ease-smooth hover:brightness-110 hover:scale-[1.02]"
               data-hover
             >
-              Contact
+              Kontakt
             </a>
             <a
               href="#work"
               className="inline-flex items-center justify-center rounded-sm border border-content px-8 py-3.5 font-body text-xs font-bold uppercase tracking-[0.15em] text-content transition-all duration-base ease-smooth hover:bg-content hover:text-surface"
               data-hover
             >
-              Work
+              Projekte
             </a>
           </motion.div>
         </div>

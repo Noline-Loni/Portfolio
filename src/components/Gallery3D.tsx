@@ -2,14 +2,11 @@ import { useRef, useState, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
 const images = [
-  { src: '/images/works/3d/beauty-products.png', alt: '3D Beauty Products Rendering' },
-  { src: '/images/works/3d/Nail_Shop_mockup-Kamera.jpg', alt: '3D Nail Shop Interior Mockup' },
-  { src: '/images/works/3d/Tabletop_Menue-Mockup_new-Kamera 3.png', alt: '3D Tabletop Menu Mockup' },
-  { src: '/images/works/3d/Tabletop_Menue-Mockup_new2-Kamera 2.jpg', alt: '3D Tabletop Menu Mockup Alternate' },
-  { src: '/images/works/3d/Toy_Room-Front.png', alt: '3D Toy Room Front View' },
-  { src: '/images/works/3d/Toy_Room-Peak.png', alt: '3D Toy Room Peak View' },
-  { src: '/images/works/3d/Toy_Room-Seite.png', alt: '3D Toy Room Side View' },
-  { src: '/images/works/3d/Vases-Kamera.png', alt: '3D Vases Still Life Rendering' },
+  { src: '/images/works/3d/beauty-products.webp', alt: '3D Beauty Products Rendering' },
+  { src: '/images/works/3d/Nail_Shop_mockup-Kamera.webp', alt: '3D Nail Shop Interior Mockup' },
+  { src: '/images/works/3d/Tabletop_Menue-Mockup_new-Kamera 3.webp', alt: '3D Tabletop Menu Mockup' },
+  { src: '/images/works/3d/Tabletop_Menue-Mockup_new2-Kamera 2.webp', alt: '3D Tabletop Menu Mockup Alternate' },
+  { src: '/images/works/3d/Vases-Kamera.webp', alt: '3D Vases Still Life Rendering' },
 ]
 
 export default function Gallery3D() {
@@ -70,13 +67,14 @@ export default function Gallery3D() {
           {images.map((img, i) => (
             <div
               key={img.src}
-              className="relative h-[50vh] w-[75vw] flex-shrink-0 overflow-hidden rounded-md md:h-[60vh] md:w-[50vw] lg:w-[45vw]"
+              className="relative h-[50vh] w-[75vw] flex-shrink-0 overflow-hidden rounded-md shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)] md:h-[60vh] md:w-[50vw] lg:w-[45vw]"
             >
               <img
                 src={img.src}
                 alt={img.alt}
                 className="h-full w-full object-cover transition-transform duration-700 ease-smooth hover:scale-105"
                 loading="lazy"
+                decoding="async"
               />
               {/* Subtle gradient overlay at bottom */}
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-surface/40 to-transparent" />

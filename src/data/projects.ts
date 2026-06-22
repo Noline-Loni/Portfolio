@@ -1,10 +1,36 @@
+export interface ProjectMetric {
+  value: string
+  label: string
+}
+
+export interface ProcessStep {
+  title: string
+  desc: string
+}
+
 export interface ProjectSection {
-  type: 'text' | 'image' | 'image-grid' | 'quote'
+  type:
+    | 'text'
+    | 'image'
+    | 'image-grid'
+    | 'quote'
+    | 'metrics'
+    | 'before-after'
+    | 'process'
+    | 'code'
+    | 'tech-stack'
   heading?: string
   content?: string
   src?: string
   alt?: string
   images?: { src: string; alt: string }[]
+  metrics?: ProjectMetric[]
+  before?: string
+  after?: string
+  steps?: ProcessStep[]
+  code?: string
+  caption?: string
+  stack?: string[]
 }
 
 export interface Project {
@@ -13,8 +39,14 @@ export interface Project {
   subtitle: string
   category: string
   year: string
-  cover: string
+  /** 'design' (default) shows an image cover; 'automation' uses a typographic/metric treatment */
+  kind?: 'design' | 'automation'
+  cover?: string
+  /** Descriptive alt text for the cover image */
+  coverAlt?: string
   coverPosition?: string
+  /** Headline number for automation cards/hero (no cover image needed) */
+  heroMetric?: ProjectMetric
   tags: string[]
   intro: string
   sections: ProjectSection[]
@@ -29,7 +61,9 @@ export const projects: Project[] = [
     subtitle: 'Brand Identity Design',
     category: 'Branding / Fashion / Jewelry',
     year: '2025',
-    cover: '/images/works/lubalabs/Logo Mockup_LubaLabs_hell.png',
+    cover: '/images/works/lubalabs/Logo Mockup_LubaLabs_hell.webp',
+    coverAlt:
+      'Luba Labs Markenlogo als goldenes Mockup auf hellem, strukturiertem Hintergrund',
     tags: ['Logo', 'CI-Styleguide', 'Packaging', 'Social Media', '3D Jewelry'],
     intro:
       'Komplette Markenidentität für ein nachhaltiges Schmuck- und Modelabel, das afrikanische Tradition mit moderner Ästhetik verbindet.',
@@ -42,7 +76,7 @@ export const projects: Project[] = [
       },
       {
         type: 'image',
-        src: '/images/works/lubalabs/Logo Mockup_LubaLabs_erweitert.png',
+        src: '/images/works/lubalabs/Logo Mockup_LubaLabs_erweitert.webp',
         alt: 'Luba Labs Logo auf strukturiertem braunem Hintergrund',
       },
       {
@@ -55,11 +89,11 @@ export const projects: Project[] = [
         type: 'image-grid',
         images: [
           {
-            src: '/images/works/lubalabs/LubaLabs_Logo_gold-darkblack.png',
+            src: '/images/works/lubalabs/LubaLabs_Logo_gold-darkblack.webp',
             alt: 'Luba Labs Logo Gold auf Schwarz',
           },
           {
-            src: '/images/works/lubalabs/LubaLabs_Logo_gold-creme.png',
+            src: '/images/works/lubalabs/LubaLabs_Logo_gold-creme.webp',
             alt: 'Luba Labs Logo Gold auf Creme',
           },
         ],
@@ -72,7 +106,7 @@ export const projects: Project[] = [
       },
       {
         type: 'image',
-        src: '/images/works/lubalabs/LubaLabs_Jewelry_3D_new-Kamera.png',
+        src: '/images/works/lubalabs/LubaLabs_Jewelry_3D_new-Kamera.webp',
         alt: 'Luba Labs Schmuck 3D-Rendering — goldene Ohrringe',
       },
       {
@@ -85,18 +119,18 @@ export const projects: Project[] = [
         type: 'image-grid',
         images: [
           {
-            src: '/images/works/lubalabs/Clothing Package mock up_LubaLabs_neu.png',
+            src: '/images/works/lubalabs/Clothing Package mock up_LubaLabs_neu.webp',
             alt: 'Luba Labs Verpackungs-Mockup',
           },
           {
-            src: '/images/works/lubalabs/Clothing Label mock up_LubaLabs.png',
+            src: '/images/works/lubalabs/Clothing Label mock up_LubaLabs.webp',
             alt: 'Luba Labs Clothing Label Mockup',
           },
         ],
       },
       {
         type: 'image',
-        src: '/images/works/lubalabs/Letter Mockup_LubaLabs.png',
+        src: '/images/works/lubalabs/Letter Mockup_LubaLabs.webp',
         alt: 'Luba Labs Geschäftsbrief Mockup',
       },
       {
@@ -107,7 +141,7 @@ export const projects: Project[] = [
       },
       {
         type: 'image',
-        src: '/images/works/lubalabs/IG_Mockup_LubaLabs.png',
+        src: '/images/works/lubalabs/IG_Mockup_LubaLabs.webp',
         alt: 'Luba Labs Instagram Mockup mit Posts und Stories',
       },
     ],
@@ -119,7 +153,9 @@ export const projects: Project[] = [
     subtitle: 'Brand Identity Design',
     category: 'Branding / Packaging',
     year: '2023',
-    cover: '/images/works/cremas-lakay.jpg',
+    cover: '/images/works/cremas-lakay.webp',
+    coverAlt:
+      'Flaschen-Mockup des haitianischen Kokosnusslikörs Cremas Lakay mit gestaltetem Etikett',
     tags: ['Logo', 'Label', 'Packaging', 'CI-Styleguide', 'Social Media'],
     intro:
       'Logo und Labeldesign für einen traditionellen haitianischen Kokosnusslikör. Eine authentische Marke erschaffen, die Natürlichkeit, Tradition und Emotionalität verbindet.',
@@ -132,7 +168,7 @@ export const projects: Project[] = [
       },
       {
         type: 'image',
-        src: '/images/works/cremas-lakay/Logo.png',
+        src: '/images/works/cremas-lakay/Logo.webp',
         alt: 'Cremas Lakay Logo',
       },
       {
@@ -143,7 +179,7 @@ export const projects: Project[] = [
       },
       {
         type: 'image',
-        src: '/images/works/cremas-lakay/Moodboard-30.jpg',
+        src: '/images/works/cremas-lakay/Moodboard-30.webp',
         alt: 'Cremas Lakay Moodboard — Haitianische Inspirationen und Farbpalette',
       },
       {
@@ -154,18 +190,18 @@ export const projects: Project[] = [
       },
       {
         type: 'image',
-        src: '/images/works/cremas-lakay/CL_Bottle_Mockup_2cremas.jpg',
+        src: '/images/works/cremas-lakay/CL_Bottle_Mockup_2cremas.webp',
         alt: 'Cremas Lakay Flaschen-Mockup Vorderseite',
       },
       {
         type: 'image-grid',
         images: [
           {
-            src: '/images/works/cremas-lakay/CL_Bottle_Mockup_2cremas_hinten.jpg',
+            src: '/images/works/cremas-lakay/CL_Bottle_Mockup_2cremas_hinten.webp',
             alt: 'Cremas Lakay Flaschen-Mockup Rückseite',
           },
           {
-            src: '/images/works/cremas-lakay/CL_Box-Mockup_transparent.png',
+            src: '/images/works/cremas-lakay/CL_Box-Mockup_transparent.webp',
             alt: 'Cremas Lakay Geschenkbox Mockup',
           },
         ],
@@ -178,23 +214,23 @@ export const projects: Project[] = [
       },
       {
         type: 'image',
-        src: '/images/works/cremas-lakay/Anzeige_Mockup.jpg',
+        src: '/images/works/cremas-lakay/Anzeige_Mockup.webp',
         alt: 'Cremas Lakay Anzeigen-Mockup',
       },
       {
         type: 'image',
-        src: '/images/works/cremas-lakay/Web 1920 – 2.png',
+        src: '/images/works/cremas-lakay/Web 1920 – 2.webp',
         alt: 'Cremas Lakay Branding Übersicht und CI-Styleguide',
       },
       {
         type: 'image-grid',
         images: [
           {
-            src: '/images/works/cremas-lakay/Instagram-Post – 3.png',
+            src: '/images/works/cremas-lakay/Instagram-Post – 3.webp',
             alt: 'Cremas Lakay Instagram Post',
           },
           {
-            src: '/images/works/cremas-lakay/Instagram-Post – 4.png',
+            src: '/images/works/cremas-lakay/Instagram-Post – 4.webp',
             alt: 'Cremas Lakay Instagram Post',
           },
         ],
@@ -208,7 +244,9 @@ export const projects: Project[] = [
     subtitle: 'Logo Redesign',
     category: 'Logo Design / Corporate Identity',
     year: '2023',
-    cover: '/images/works/haiti-med.png',
+    cover: '/images/works/haiti-med.webp',
+    coverAlt:
+      'Haiti-Med e.V. Logo-Redesign mit Buch-, Schlangen- und Palmen-Symbolik in kräftigen Farben',
     tags: ['Logo', 'Farben', 'CI-Guidelines', 'Social Media'],
     intro:
       'Redesign des Logos einer gemeinnützigen Organisation für Bildung und Gesundheitsversorgung in Haiti. Schrift verbessert, Farbpalette definiert und Kontrastfarbe ergänzt.',
@@ -221,7 +259,7 @@ export const projects: Project[] = [
       },
       {
         type: 'image',
-        src: '/images/works/haiti-med/before-after.png',
+        src: '/images/works/haiti-med/before-after.webp',
         alt: 'Haiti-Med Logo Vorher-Nachher Vergleich',
       },
       {
@@ -238,12 +276,12 @@ export const projects: Project[] = [
       },
       {
         type: 'image',
-        src: '/images/works/haiti-med/redesign-overview.png',
+        src: '/images/works/haiti-med/redesign-overview.webp',
         alt: 'Redesign Übersicht mit Logo-Variationen und CI-System',
       },
       {
         type: 'image',
-        src: '/images/works/haiti-med/ci-guidelines.png',
+        src: '/images/works/haiti-med/ci-guidelines.webp',
         alt: 'Corporate Identity Guidelines mit Typografie und Farbpalette',
       },
       {
@@ -254,18 +292,18 @@ export const projects: Project[] = [
       },
       {
         type: 'image',
-        src: '/images/works/haiti-med/social-media.png',
+        src: '/images/works/haiti-med/social-media.webp',
         alt: 'Social Media Posts und Mobile Mockups für Haiti-Med e.V.',
       },
       {
         type: 'image-grid',
         images: [
           {
-            src: '/images/works/haiti-med/08_2025-Instagram_Post_HaitiKonbit2025_Vormerken_1080x1080px.png',
+            src: '/images/works/haiti-med/08_2025-Instagram_Post_HaitiKonbit2025_Vormerken_1080x1080px.webp',
             alt: 'Haiti Konbit 2025 Instagram Post',
           },
           {
-            src: '/images/works/haiti-med/2025_08-Instagram_Post_HaitiKonbit2025_Kuenstlerspotlight-WAWA_1080x1080px.png',
+            src: '/images/works/haiti-med/2025_08-Instagram_Post_HaitiKonbit2025_Kuenstlerspotlight-WAWA_1080x1080px.webp',
             alt: 'Haiti Konbit 2025 Künstlerspotlight',
           },
         ],
@@ -279,7 +317,9 @@ export const projects: Project[] = [
     subtitle: 'Mobile App Design',
     category: 'UX Design / Mobile App',
     year: '2021',
-    cover: '/images/works/nutrition-pets.png',
+    cover: '/images/works/nutrition-pets.webp',
+    coverAlt:
+      'High-Fidelity App-Screens der Haustier-Ernährungs-App NUTRITIONfurPETS',
     coverPosition: 'object-[center_60%]',
     tags: ['UX Research', 'Wireframes', 'Figma Prototype'],
     intro:
@@ -303,7 +343,7 @@ export const projects: Project[] = [
       },
       {
         type: 'image',
-        src: '/images/works/nutrition-pets/overview.png',
+        src: '/images/works/nutrition-pets/overview.webp',
         alt: 'NUTRITIONfurPETS App Screens Übersicht',
       },
       {
@@ -316,11 +356,11 @@ export const projects: Project[] = [
         type: 'image-grid',
         images: [
           {
-            src: '/images/works/nutrition-pets/Gruppe maskieren 25.png',
+            src: '/images/works/nutrition-pets/Gruppe maskieren 25.webp',
             alt: 'Crazy Eights Skizzen',
           },
           {
-            src: '/images/works/nutrition-pets/Web 1920 – 3.png',
+            src: '/images/works/nutrition-pets/Web 1920 – 3.webp',
             alt: 'NUTRITIONfurPETS Wireframes',
           },
         ],
@@ -333,11 +373,314 @@ export const projects: Project[] = [
       },
       {
         type: 'image',
-        src: '/images/works/nutrition-pets/Web 1920 – 4.png',
+        src: '/images/works/nutrition-pets/Web 1920 – 4.webp',
         alt: 'NUTRITIONfurPETS High-Fidelity Screens',
       },
     ],
     nextProject: 'luba-labs',
+  },
+  {
+    slug: 'qr-stellencheck',
+    title: 'QR-Code-Stellencheck',
+    subtitle: 'Marketing Automation',
+    category: 'Automation / Recruiting',
+    year: '2026',
+    kind: 'automation',
+    cover: '/images/works/automation/qr.webp',
+    coverAlt:
+      'Abstrakte Visualisierung eines zerfallenden QR-Code-Rasters mit Koralle-Scanstrahl und Datennetz',
+    heroMetric: { value: '199', label: 'tote Codes im ersten Lauf entdeckt' },
+    tags: ['Python', 'QR.io API', 'softgarden', 'Task Scheduler', 'Claude'],
+    intro:
+      'Gedruckte Recruiting-Plakate eines Pflegekonzerns mit über 100 Standorten verlinken per QR-Code auf einzelne Stellenanzeigen — die ablaufen, ohne dass man es dem Code ansieht. Ein Python-Workflow prüft den gesamten Bestand wöchentlich und meldet jeden toten Link.',
+    sections: [
+      {
+        type: 'metrics',
+        metrics: [
+          { value: '199', label: 'tote Codes im ersten Lauf' },
+          { value: '610', label: 'Codes pro Woche geprüft' },
+          { value: '0', label: 'manuelle Stichproben nötig' },
+          { value: 'Mo 08:00', label: 'läuft vollautomatisch' },
+        ],
+      },
+      {
+        type: 'text',
+        heading: 'Das Problem',
+        content:
+          'Auf Plakaten, Flyern und Großflächen kleben dynamische QR-Codes, die auf einzelne Stellenanzeigen verlinken. Läuft eine Stelle ab, sieht man das dem gedruckten Code nicht an — der Link führt ins Leere, die Bewerbung ist verloren. Geprüft wurde bisher nur stichprobenartig von Hand.',
+      },
+      {
+        type: 'before-after',
+        before:
+          'Manuelle Stichproben. Abgelaufene Stellen-Links bleiben unbemerkt auf hunderten gedruckten Codes im Umlauf — verlorene Bewerbungen, verbranntes Mediabudget.',
+        after:
+          'Ein wöchentlicher Auto-Check prüft den kompletten Bestand. Ein Excel-Report listet jeden toten Code, sortiert nach Reichweite — bereit zum gezielten Austausch.',
+      },
+      {
+        type: 'process',
+        heading: 'Der Workflow',
+        steps: [
+          { title: 'Pull', desc: 'QR-Codes samt Ziel-URLs aus dem Dashboard ziehen.' },
+          { title: 'Check', desc: 'Python ruft jede Stelle live auf und wertet den Redirect aus.' },
+          { title: 'Report', desc: 'Excel-Report: abgelaufen / aktiv, nach Scans sortiert.' },
+          { title: 'Replace', desc: 'Neue Links halbautomatisch ins Dashboard zurückspielen.' },
+        ],
+      },
+      {
+        type: 'text',
+        heading: 'Die Lösung',
+        content:
+          'Der Check läuft lokal und ohne Login-Daten — er trifft nur die öffentliche Bewerbungs-URL und liest am Redirect ab, ob eine Stelle aktiv ist. Pull und Push laufen bewusst im eingeloggten Browser-Kontext, damit nie ein Session-Cookie das System verlässt. Eine Windows-Aufgabe stößt den Check jeden Montag um 08:00 automatisch an.',
+      },
+      {
+        type: 'code',
+        caption: 'check_qr_codes.py',
+        code: `# Stelle abgelaufen? Redirect der Bewerbungs-URL auswerten
+r = session.get(click_url, allow_redirects=True)
+
+if "/jobposting/unavailable/" in r.url:
+    status = "ABGELAUFEN"   # toter Code -> ersetzen
+elif "career.softgarden.de/application" in r.url:
+    status = "AKTIV"
+else:
+    status = "UNKLAR"       # manuell prüfen`,
+      },
+      {
+        type: 'quote',
+        content:
+          'Tote Recruiting-Plakate fallen jetzt auf, bevor sie Bewerbungen kosten.',
+      },
+      {
+        type: 'tech-stack',
+        heading: 'Tech-Stack',
+        stack: ['Python', 'QR.io API', 'softgarden', 'Windows Task Scheduler', 'Claude in Chrome'],
+      },
+    ],
+    nextProject: 'indesign-automation',
+  },
+  {
+    slug: 'indesign-automation',
+    title: 'InDesign-Print-Automation',
+    subtitle: 'Design Automation',
+    category: 'Automation / Print',
+    year: '2024',
+    kind: 'automation',
+    cover: '/images/works/automation/indesign.webp',
+    coverAlt:
+      'Abstrakte technische Blueprint-Layouts, die zu einer einheitlichen Plakatvorlage zusammenlaufen, mit Koralle-Passmarken',
+    heroMetric: { value: '20 Min', label: 'statt 4 Stunden pro Plakat-Serie' },
+    tags: ['Adobe InDesign', 'Daten-Merge', 'GREP', 'Reguläre Ausdrücke'],
+    intro:
+      'Jeden Monat 30 standortindividuelle Recruiting-Plakate — früher vier Stunden manuelle Copy-Paste-Arbeit mit hohem Fehlerrisiko. Mit Daten-Merge und GREP-Automatik entstehen sie heute in 20 Minuten, fehlerfrei und beliebig reproduzierbar.',
+    sections: [
+      {
+        type: 'metrics',
+        metrics: [
+          { value: '4 h → 20 min', label: 'pro Plakat-Serie' },
+          { value: '30', label: 'Plakate pro Lauf' },
+          { value: '12×', label: 'schneller als manuell' },
+          { value: '100+', label: 'Standorte versorgt' },
+        ],
+      },
+      {
+        type: 'text',
+        heading: 'Das Problem',
+        content:
+          'Für jede Kampagne mussten 30 Plakate von Hand individualisiert werden: Standortadresse, PLZ, Telefonnummer und Ansprechpartner kopieren und einsetzen. Das kostete rund vier Stunden pro Serie — und jeder manuelle Eingriff war eine mögliche Fehlerquelle.',
+      },
+      {
+        type: 'before-after',
+        before:
+          '30 Plakate von Hand: Adresse, PLZ und Telefon je Standort kopieren und einsetzen — rund vier Stunden, fehleranfällig, nicht reproduzierbar.',
+        after:
+          'Eine Datenquelle, ein Klick: Daten-Merge erzeugt alle 30 Layouts, GREP korrigiert die Typografie automatisch — 20 Minuten, identisch reproduzierbar.',
+      },
+      {
+        type: 'process',
+        heading: 'Der Workflow',
+        steps: [
+          { title: 'Daten', desc: 'Standortdaten als strukturierte Quelle (CSV) aufbereiten.' },
+          { title: 'Merge', desc: 'Daten-Merge füllt das Plakat-Template für alle Standorte.' },
+          { title: 'GREP', desc: 'Stilregeln korrigieren Typografie in einem Durchlauf.' },
+          { title: 'Export', desc: 'Druckfertige PDFs — identisch reproduzierbar.' },
+        ],
+      },
+      {
+        type: 'text',
+        heading: 'GREP & Typografie',
+        content:
+          'Wiederkehrende typografische Korrekturen — geschützte Leerzeichen vor Maßeinheiten, einheitliche Datumsformate, korrekte Schreibweise von Rechtsformen — laufen als gespeicherte GREP-Stilregeln. Was vorher hunderte manuelle Eingriffe waren, ist jetzt ein Klick. Dasselbe Regelset hält auch einen 80+ Seiten starken Geschäftsbericht konsistent.',
+      },
+      {
+        type: 'code',
+        caption: 'GREP-Stilregeln (Auszug)',
+        code: `# Geschütztes Leerzeichen vor Maßeinheiten & Uhrzeiten
+Suchen:   (\\d)\\s(km|m²|€|Uhr|Mitarbeiter)
+Ersetzen: $1~S$2          # ~S = geschütztes Leerzeichen
+
+# Datumsformat vereinheitlichen
+Suchen:   (\\d{1,2})\\.(\\d{1,2})\\.(\\d{4})
+Ersetzen: $1.$2.$3`,
+      },
+      {
+        type: 'quote',
+        content: 'Aus einem halben Arbeitstag wird ein Kaffee — bei null Tippfehlern.',
+      },
+      {
+        type: 'tech-stack',
+        heading: 'Tech-Stack',
+        stack: ['Adobe InDesign', 'Daten-Merge', 'GREP', 'Reguläre Ausdrücke'],
+      },
+    ],
+    nextProject: 'kpi-dashboard',
+  },
+  {
+    slug: 'kpi-dashboard',
+    title: 'KPI-Dashboard',
+    subtitle: 'Full-Stack Development',
+    category: 'Engineering / Data',
+    year: '2026',
+    kind: 'automation',
+    cover: '/images/works/automation/kpi.webp',
+    coverAlt:
+      'Abstrakte Visualisierung dreier zusammenlaufender Datenströme zu einem Koralle-Fokuspunkt vor angedeuteter Diagrammkurve',
+    heroMetric: { value: '3', label: 'Datenquellen in einem Dashboard vereint' },
+    tags: ['Node.js', 'Fastify', 'PostgreSQL', 'React', 'REST APIs'],
+    intro:
+      'Ein B2B-Kunde brauchte eine einzige Sicht auf seine Marketing-Performance über HubSpot, LinkedIn und Web-Analytics hinweg. Ich habe das Dashboard eigenständig gebaut — von der API-Architektur bis zum DSGVO-konformen Deployment.',
+    sections: [
+      {
+        type: 'metrics',
+        metrics: [
+          { value: '3', label: 'Datenquellen vereint' },
+          { value: 'Full-Stack', label: 'Architektur bis Deployment' },
+          { value: 'EU', label: 'DSGVO-konformes Hosting' },
+          { value: '1', label: 'Single Source of Truth' },
+        ],
+      },
+      {
+        type: 'text',
+        heading: 'Die Aufgabe',
+        content:
+          'Marketing-Daten lagen in drei getrennten Plattformen: HubSpot (CRM), LinkedIn (Kampagnen) und Web-Analytics. Drei Logins, manuelles Zusammenkopieren in Tabellen — und nie eine gemeinsame, aktuelle Sicht auf die Performance.',
+      },
+      {
+        type: 'before-after',
+        before:
+          'Drei Plattformen, drei Logins, manuelles Zusammenkopieren in Tabellen — keine gemeinsame Sicht, keine Echtzeit.',
+        after:
+          'Ein Dashboard zieht alle drei Quellen über API-Adapter zusammen — konsolidiert, in Echtzeit, eine Quelle der Wahrheit.',
+      },
+      {
+        type: 'process',
+        heading: 'Architektur',
+        steps: [
+          { title: 'API-Adapter', desc: 'Je Quelle ein Adapter normalisiert die Rohdaten.' },
+          { title: 'KPI-Registry', desc: 'Eine zentrale Registry definiert jede Kennzahl genau einmal.' },
+          { title: 'PostgreSQL', desc: 'Schema speichert konsolidierte Zeitreihen.' },
+          { title: 'React', desc: 'Frontend visualisiert die KPIs entscheidungsreif.' },
+        ],
+      },
+      {
+        type: 'code',
+        caption: 'kpi-registry.ts',
+        code: `// KPI-Registry: eine Definition, viele Quellen
+registry.register({
+  id: "leads_qualified",
+  sources: ["hubspot", "linkedin", "web"],
+  resolve: async (ctx) => sum(await ctx.fetchAll("leads_qualified")),
+  format: "integer",
+})`,
+      },
+      {
+        type: 'text',
+        heading: 'Eigenverantwortung',
+        content:
+          'Von der Anforderungsanalyse über die Architekturentscheidungen bis zum Deployment auf EU-Infrastruktur lag alles in meiner Hand — inklusive direkter Abstimmung mit Projektleitung und Kunde.',
+      },
+      {
+        type: 'quote',
+        content: 'Aus drei Datensilos wird eine Entscheidungsgrundlage.',
+      },
+      {
+        type: 'tech-stack',
+        heading: 'Tech-Stack',
+        stack: ['Node.js', 'Fastify', 'PostgreSQL', 'React', 'REST APIs', 'Hetzner (EU)'],
+      },
+    ],
+    nextProject: 'meta-campaigns',
+  },
+  {
+    slug: 'meta-campaigns',
+    title: 'Meta-Kampagnen-Automation',
+    subtitle: 'Marketing Automation',
+    category: 'Automation / Performance Marketing',
+    year: '2025',
+    kind: 'automation',
+    cover: '/images/works/automation/meta-campaigns.webp',
+    coverAlt:
+      'Abstrakte Visualisierung: eine Master-Anzeige vervielfältigt sich über Koralle-Flusslinien in ein Raster vieler identischer Ad-Set-Kopien',
+    heroMetric: { value: '~12 h → 0', label: 'manuelle Arbeit pro Monat' },
+    tags: ['Python', 'Meta Marketing API', 'facebook-business', 'REST'],
+    intro:
+      'Jeden Monat mussten für einen Pflegekonzern mit über 100 Standorten hunderte Ad-Sets von Hand in Meta angelegt werden — ein wiederkehrender, fehleranfälliger Prozess von rund 12 Stunden. Ein Python-Skript über die Meta Marketing API erledigt das jetzt vollautomatisch.',
+    sections: [
+      {
+        type: 'metrics',
+        metrics: [
+          { value: '~12 h → 0', label: 'manuelle Arbeit pro Monat' },
+          { value: '100+', label: 'Standorte je Lauf' },
+          { value: '1', label: 'Skript statt hunderter Klicks' },
+          { value: 'monatlich', label: 'vollautomatischer Lauf' },
+        ],
+      },
+      {
+        type: 'text',
+        heading: 'Das Problem',
+        content:
+          'Für die Recruiting-Kampagnen über 100+ Standorte mussten Monat für Monat hunderte Ad-Sets manuell im Meta Ads Manager dupliziert und je Standort angepasst werden — Targeting, Region, Budget. Rund zwölf Stunden monotone, fehleranfällige Klickarbeit.',
+      },
+      {
+        type: 'before-after',
+        before:
+          'Jeden Monat hunderte Ad-Sets von Hand in Meta anlegen und je Standort anpassen — ~12 Stunden, monoton und fehleranfällig.',
+        after:
+          'Ein Python-Skript erzeugt alle Kampagnen und Ad-Sets über die Meta Marketing API — standortgenau, in Minuten, reproduzierbar.',
+      },
+      {
+        type: 'process',
+        heading: 'Der Workflow',
+        steps: [
+          { title: 'Standortdaten', desc: 'Standorte und Parameter aus einer zentralen Liste lesen.' },
+          { title: 'Vorlage', desc: 'Kampagnen-Template einmal definieren.' },
+          { title: 'API', desc: 'Meta Marketing API legt Kampagnen & Ad-Sets je Standort an.' },
+          { title: 'Kontrolle', desc: 'Logging und Prüfung vor dem Aktivschalten.' },
+        ],
+      },
+      {
+        type: 'code',
+        caption: 'create_campaigns.py',
+        code: `# Pro Standort ein Ad-Set über die Meta Marketing API anlegen
+for standort in standorte:
+    AdSet(parent_id=campaign_id).remote_create(params={
+        "name": f"{standort['name']} – Recruiting",
+        "targeting": geo_targeting(standort["plz"], radius_km=25),
+        "daily_budget": standort["budget"],
+        "optimization_goal": "LEAD_GENERATION",
+    })`,
+      },
+      {
+        type: 'quote',
+        content:
+          'Ein halber Arbeitstag im Monat wird zu einem Skriptlauf von Minuten.',
+      },
+      {
+        type: 'tech-stack',
+        heading: 'Tech-Stack',
+        stack: ['Python', 'Meta Marketing API', 'facebook-business SDK', 'REST'],
+      },
+    ],
+    nextProject: 'qr-stellencheck',
   },
 ]
 

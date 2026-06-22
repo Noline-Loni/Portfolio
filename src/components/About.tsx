@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 
 const words =
-  'Aus Bochum. Ich schlie\u00DFe die L\u00FCcke zwischen herausragendem Design und komplexer technischer Logik. Von der ersten Skizze bis zur automatisierten Backend-Architektur entwickle ich digitale Erlebnisse, die fantastisch aussehen und intelligent funktionieren.'.split(
+  'Creative Technologist an der Schnittstelle von Design, Marketing und Technologie. Ich gestalte nicht nur Interfaces und Kampagnen \u2014 ich baue die Automatisierung dahinter: Python-Skripte, API-Anbindungen und Datendashboards, die Marketing-Performance sichtbar und manuelle Prozesse \u00FCberfl\u00FCssig machen. Bochum als Basis, Projekte \u00FCberall.'.split(
     ' '
   )
 
@@ -22,7 +22,7 @@ export default function About() {
         >
           <div className="h-2 w-2 rounded-full bg-accent" />
           <span className="font-body text-xs uppercase tracking-[0.3em] text-content-tertiary">
-            About
+            Über mich
           </span>
         </motion.div>
 
