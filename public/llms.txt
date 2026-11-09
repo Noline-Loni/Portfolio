@@ -16,6 +16,9 @@
 - [KPI-Dashboard](https://nolinelindor.com/project/kpi-dashboard): Full-Stack-Dashboard konsolidiert HubSpot, LinkedIn und Web-Analytics in einer Quelle (Node.js, Fastify, PostgreSQL, React).
 - [Luba Labs](https://nolinelindor.com/project/luba-labs), [Cremas Lakay](https://nolinelindor.com/project/cremas-lakay), [Haiti-Med e.V.](https://nolinelindor.com/project/haiti-med), [NUTRITIONfurPETS](https://nolinelindor.com/project/nutrition-pets): Brand-Identity- und UX-Design-Projekte.
 
+## Kennenlernen
+- [1 Wahrheit, 1 Lüge](https://nolinelindor.com/kennenlernen): Interaktives Kennenlern-Spiel – drei Runden mit je einer wahren und einer erfundenen Aussage über Noline Lindor.
+
 ## Kontakt
 - Website: https://nolinelindor.com
 - E-Mail: nolinelindor@gmail.com

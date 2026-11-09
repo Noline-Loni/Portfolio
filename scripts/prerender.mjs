@@ -59,6 +59,17 @@ const routes = [
     changefreq: 'yearly',
     jsonLd: [creativeWorkLd(p), breadcrumbLd(p)],
   })),
+  {
+    path: '/kennenlernen',
+    title: '1 Wahrheit, 1 Lüge – Lern Noline kennen',
+    description:
+      'Ein kleines Spiel statt eines langen Anschreibens: Drei Runden, je zwei Aussagen über Noline Lindor. Eine stimmt, eine ist erfunden. Findest du die Wahrheit?',
+    type: 'website',
+    image: '/og-kennenlernen.jpg',
+    priority: '0.7',
+    changefreq: 'monthly',
+    jsonLd: [],
+  },
   // Legal pages: prerendered (so they work without JS and on direct load) but
   // noindex + left out of the sitemap — the Impressum contains a home address.
   ...[
