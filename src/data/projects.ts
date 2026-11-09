@@ -119,7 +119,7 @@ export const projects: Project[] = [
         type: 'image-grid',
         images: [
           {
-            src: '/images/works/lubalabs/Clothing Package mock up_LubaLabs_neu.webp',
+            src: '/images/works/lubalabs/Clothing Package mock up_LubaLabs_hoch.webp',
             alt: 'Luba Labs Verpackungs-Mockup',
           },
           {
@@ -201,7 +201,7 @@ export const projects: Project[] = [
             alt: 'Cremas Lakay Flaschen-Mockup Rückseite',
           },
           {
-            src: '/images/works/cremas-lakay/CL_Box-Mockup_transparent.webp',
+            src: '/images/works/cremas-lakay/CL_Box-Mockup_4zu3.webp',
             alt: 'Cremas Lakay Geschenkbox Mockup',
           },
         ],
@@ -299,8 +299,8 @@ export const projects: Project[] = [
         type: 'image-grid',
         images: [
           {
-            src: '/images/works/haiti-med/08_2025-Instagram_Post_HaitiKonbit2025_Vormerken_1080x1080px.webp',
-            alt: 'Haiti Konbit 2025 Instagram Post',
+            src: '/images/works/haiti-med/2026_09-Instagram_Post_HaitiKonbit2026_Kuenstlerspotlight-TiCorn_1080x1080px.webp',
+            alt: 'Haiti Konbit 2026 Künstlerspotlight TiCorn',
           },
           {
             src: '/images/works/haiti-med/2025_08-Instagram_Post_HaitiKonbit2025_Kuenstlerspotlight-WAWA_1080x1080px.webp',
