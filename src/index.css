@@ -22,6 +22,14 @@
     color: #F5F5EF;
   }
 
+  /* Keyboard focus: visible coral ring (only for keyboard navigation,
+     :focus-visible does not trigger on mouse clicks) */
+  :focus-visible {
+    outline: 2px solid #FB7751;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
   @media (pointer: fine) {
     *, *::before, *::after {
       cursor: none !important;

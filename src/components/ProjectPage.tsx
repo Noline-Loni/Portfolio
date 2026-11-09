@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import { getProject, getNextProject } from '../data/projects'
 import Seo from './Seo'
 import { creativeWorkLd, breadcrumbLd } from '../lib/structuredData'
@@ -30,8 +30,11 @@ export default function ProjectPage() {
     target: heroRef,
     offset: ['start start', 'end start'],
   })
-  const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
-  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.1])
+  // No parallax for "reduce motion" users (scroll-linked motion is not
+  // covered by MotionConfig, so it is switched off here explicitly)
+  const reduceMotion = useReducedMotion()
+  const heroY = useTransform(scrollYProgress, [0, 1], reduceMotion ? ['0%', '0%'] : ['0%', '30%'])
+  const heroScale = useTransform(scrollYProgress, [0, 1], reduceMotion ? [1, 1] : [1, 1.1])
 
   // Scroll to top on slug change — use instant scroll + reset Lenis
   useEffect(() => {

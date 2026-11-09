@@ -2,11 +2,11 @@ import { useRef, useState, useEffect } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
 const images = [
-  { src: '/images/works/3d/beauty-products.webp', alt: '3D Beauty Products Rendering' },
-  { src: '/images/works/3d/Nail_Shop_mockup-Kamera.webp', alt: '3D Nail Shop Interior Mockup' },
-  { src: '/images/works/3d/Tabletop_Menue-Mockup_new-Kamera 3.webp', alt: '3D Tabletop Menu Mockup' },
-  { src: '/images/works/3d/Tabletop_Menue-Mockup_new2-Kamera 2.webp', alt: '3D Tabletop Menu Mockup Alternate' },
-  { src: '/images/works/3d/Vases-Kamera.webp', alt: '3D Vases Still Life Rendering' },
+  { src: '/images/works/3d/beauty-products.webp', alt: '3D-Rendering: Sprühflasche und Cremetiegel mit nl.-Etikett auf Terrazzo-Kante vor apricotfarbenem Hintergrund' },
+  { src: '/images/works/3d/Nail_Shop_mockup-Kamera.webp', alt: '3D-Rendering eines Nagelstudio-Tischs mit Nagellack, Visitenkarten, Laptop und Kaffeetasse' },
+  { src: '/images/works/3d/Tabletop_Menue-Mockup_new-Kamera 3.webp', alt: '3D-Rendering: aufgeklappte Speisekarte auf einem Teller im Abendlicht, dahinter Schale und Glas' },
+  { src: '/images/works/3d/Tabletop_Menue-Mockup_new2-Kamera 2.webp', alt: '3D-Rendering: Speisekarte auf einem Teller mit Messer und Gabel, von schräg oben im Schattenlicht' },
+  { src: '/images/works/3d/Vases-Kamera.webp', alt: '3D-Rendering: Wandregale mit hellen und dunklen Keramikvasen, daneben eine schwarze Holzleiter' },
 ]
 
 export default function Gallery3D() {

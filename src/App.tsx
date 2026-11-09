@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Lenis from 'lenis'
+import { MotionConfig } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Marquee from './components/Marquee'
@@ -17,7 +18,7 @@ import Seo from './components/Seo'
 import FAQ from './components/FAQ'
 import CookieConsent from './components/CookieConsent'
 import BackToTop from './components/BackToTop'
-import { setLenis, scrollToTop } from './lib/scroll'
+import { setLenis, scrollToTop, prefersReducedMotion } from './lib/scroll'
 import { SITE_TITLE, SITE_DESCRIPTION } from './lib/site'
 import { personLd, websiteLd, faqLd } from './lib/structuredData'
 
@@ -27,7 +28,10 @@ function ScrollManager() {
     if (hash) {
       const el = document.querySelector(hash)
       if (el) {
-        setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100)
+        setTimeout(
+          () => el.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth' }),
+          100
+        )
       }
     } else {
       // Plain navigation (e.g. logo → home, or opening a project) lands at the top
@@ -73,6 +77,9 @@ function HomePage() {
 
 function AppContent() {
   useEffect(() => {
+    // Smooth scrolling is motion too: skip it for "reduce motion" users
+    if (prefersReducedMotion()) return
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -93,7 +100,9 @@ function AppContent() {
   }, [])
 
   return (
-    <>
+    // reducedMotion="user": with the OS "reduce motion" setting on, framer-motion
+    // drops movement (slide/scale) and keeps only opacity fades
+    <MotionConfig reducedMotion="user">
       <CustomCursor />
       <GrainOverlay />
       <Navbar />
@@ -104,7 +113,7 @@ function AppContent() {
       </Routes>
       <CookieConsent />
       <BackToTop />
-    </>
+    </MotionConfig>
   )
 }
 
