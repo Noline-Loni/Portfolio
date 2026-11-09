@@ -67,7 +67,7 @@ export default function Hero() {
             <AnimatedWords text="Design trifft" />
             <br />
             <AnimatedWords
-              text="Marketing"
+              text="KI-gestützte"
               className="text-content"
               startIndex={2}
             />
@@ -88,9 +88,9 @@ export default function Hero() {
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-            Noline Lindor — Design, Marketing-Automatisierung{' '}
+            Noline Lindor — Design, Marketing-Automatisierung mit KI{' '}
             <br className="hidden md:block" />
-            &amp; datengetriebene Dashboards.
+            und datengetriebene Dashboards.
           </motion.p>
 
           {/* CTAs */}

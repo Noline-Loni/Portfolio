@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 
 const items =
-  'UI/UX Design \u00A0\u2022\u00A0 Marketing Automation \u00A0\u2022\u00A0 KPI-Dashboards \u00A0\u2022\u00A0 Performance Marketing \u00A0\u2022\u00A0 Brand Identity \u00A0\u2022\u00A0 3D Visualisierung \u00A0\u2022\u00A0 '
+  'UI/UX Design \u00A0\u2022\u00A0 Marketing Automation \u00A0\u2022\u00A0 KI-Workflows \u00A0\u2022\u00A0 KPI-Dashboards \u00A0\u2022\u00A0 Performance Marketing \u00A0\u2022\u00A0 Brand Identity \u00A0\u2022\u00A0 3D Visualisierung \u00A0\u2022\u00A0 '
 
 export default function Marquee() {
   return (

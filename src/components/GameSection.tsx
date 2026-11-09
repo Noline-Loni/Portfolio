@@ -30,12 +30,12 @@ export default function GameSection() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <h2 className="font-display text-3xl tracking-[-0.01em] text-content md:text-4xl">
-            Claude Jump
+            Space Jump
           </h2>
           <p className="mt-4 font-body text-sm font-light leading-relaxed text-content-secondary md:text-base">
-            Ein kleines Retro-Spiel, gebaut mit purem HTML, CSS &amp; JavaScript.
-            Spring durch den Weltraum, weiche Hindernissen aus und schau wie weit
-            du kommst.
+            Ein endloser Retro-Pixel-Platformer im Weltraum, komplett in einer
+            HTML-Datei mit JavaScript und Canvas gebaut. Spring über die
+            Plattformen, sammle Herzen und besiege ab 500 Punkten das Raumschiff.
           </p>
           <a
             href="https://space-jump-ten.vercel.app"
@@ -68,7 +68,7 @@ export default function GameSection() {
                   {/* Game preview via iframe (non-interactive, visual only) */}
                   <iframe
                     src="https://space-jump-ten.vercel.app"
-                    title="Claude Jump Preview"
+                    title="Space Jump Vorschau"
                     className="crt-iframe"
                     loading="lazy"
                     tabIndex={-1}
@@ -88,7 +88,7 @@ export default function GameSection() {
               <div className="crt-bottom-bar">
                 <div className="crt-power-led" />
                 <span className="font-body text-[9px] uppercase tracking-[0.2em] text-content-tertiary/50">
-                  Claude Jump
+                  Space Jump
                 </span>
               </div>
               <div className="crt-stand" />

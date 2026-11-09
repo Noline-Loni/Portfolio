@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 
 const words =
-  'Creative Technologist an der Schnittstelle von Design, Marketing und Technologie. Ich gestalte nicht nur Interfaces und Kampagnen \u2014 ich baue die Automatisierung dahinter: Python-Skripte, API-Anbindungen und Datendashboards, die Marketing-Performance sichtbar und manuelle Prozesse \u00FCberfl\u00FCssig machen. Bochum als Basis, Projekte \u00FCberall.'.split(
+  'Creative Technologist an der Schnittstelle von Design, Marketing und Technologie. Ich gestalte nicht nur Interfaces und Kampagnen \u2014 ich baue die Automatisierung dahinter: Python-Skripte, API-Anbindungen, KI-Workflows und Datendashboards, die Marketing-Performance sichtbar und manuelle Prozesse \u00FCberfl\u00FCssig machen. Bochum als Basis, Projekte \u00FCberall.'.split(
     ' '
   )
 
