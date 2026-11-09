@@ -201,7 +201,7 @@ export const projects: Project[] = [
             alt: 'Cremas Lakay Flaschen-Mockup Rückseite',
           },
           {
-            src: '/images/works/cremas-lakay/CL_Box-Mockup_transparent.webp',
+            src: '/images/works/cremas-lakay/CL_Box-Mockup_4zu3.webp',
             alt: 'Cremas Lakay Geschenkbox Mockup',
           },
         ],
