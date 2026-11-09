@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import ArrowLink from './ArrowLink'
 
 const words =
   'Creative Technologist an der Schnittstelle von Design, Marketing und Technologie. Ich gestalte nicht nur Interfaces und Kampagnen \u2014 ich baue die Automatisierung dahinter: Python-Skripte, API-Anbindungen, KI-Workflows und Datendashboards, die Marketing-Performance sichtbar und manuelle Prozesse \u00FCberfl\u00FCssig machen. Bochum als Basis, Projekte \u00FCberall.'.split(
@@ -83,19 +83,10 @@ export default function About() {
           viewport={{ once: true, margin: '-40px' }}
           transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
         >
-          <Link
-            to="/kennenlernen"
-            className="group inline-flex items-baseline gap-3 font-body text-base text-content transition-colors duration-fast hover:text-accent md:text-lg"
-            data-hover
-          >
-            <span className="text-content-tertiary">Lieber spielen als lesen?</span>
-            <span className="font-display italic text-accent underline decoration-accent/40 underline-offset-4 group-hover:decoration-accent">
-              1 Wahrheit, 1 Lüge
-            </span>
-            <span aria-hidden className="text-accent transition-transform duration-fast group-hover:translate-x-1">
-              →
-            </span>
-          </Link>
+          <p className="font-body text-sm text-content-tertiary">
+            Lieber spielen als lesen?{' '}
+            <ArrowLink to="/kennenlernen">1 Wahrheit, 1 Lüge</ArrowLink>
+          </p>
         </motion.div>
         </div>
         </div>

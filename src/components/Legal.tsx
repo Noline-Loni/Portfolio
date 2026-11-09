@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
-import { Link } from 'react-router-dom'
 import Seo from './Seo'
+import ArrowLink from './ArrowLink'
 import { ga4Available, getConsent, revokeConsent } from '../lib/analytics'
 
 /* ------------------------------------------------------------------ */
@@ -40,13 +40,9 @@ function LegalLayout({
           <div className="legal mt-12 font-body text-sm font-light leading-relaxed text-content-secondary md:text-base">
             {children}
           </div>
-          <Link
-            to="/"
-            className="mt-16 inline-flex items-center gap-2 font-body text-sm text-accent underline underline-offset-4 transition-colors duration-fast hover:text-content"
-            data-hover
-          >
-            ← Zur Startseite
-          </Link>
+          <ArrowLink to="/" arrow="left" className="mt-16">
+            Zur Startseite
+          </ArrowLink>
         </article>
       </main>
     </>

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import ArrowLink from './ArrowLink'
 
 export default function GameSection() {
   return (
@@ -37,15 +38,9 @@ export default function GameSection() {
             HTML-Datei mit JavaScript und Canvas gebaut. Spring über die
             Plattformen, sammle Herzen und besiege ab 500 Punkten das Raumschiff.
           </p>
-          <a
-            href="https://space-jump-ten.vercel.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-2 font-body text-sm text-accent underline underline-offset-4 transition-colors duration-fast hover:text-content"
-            data-hover
-          >
-            Jetzt spielen ↗
-          </a>
+          <ArrowLink href="https://space-jump-ten.vercel.app" arrow="external" className="mt-6">
+            Jetzt spielen
+          </ArrowLink>
         </motion.div>
 
         {/* Right: CRT Monitor */}

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Seo from './Seo'
+import ArrowLink from './ArrowLink'
 import { trackEvent } from '../lib/analytics'
 import { scrollToTop } from '../lib/scroll'
 import {
@@ -313,14 +314,9 @@ export default function Kennenlernen() {
                   </a>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={start}
-                  className="mt-8 font-body text-sm text-content-secondary underline underline-offset-4 transition-colors duration-fast hover:text-accent"
-                  data-hover
-                >
+                <ArrowLink onClick={start} className="mt-8">
                   Nochmal spielen – mit neuen Runden
-                </button>
+                </ArrowLink>
               </motion.section>
             )}
           </AnimatePresence>

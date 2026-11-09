@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import { getProject, getNextProject } from '../data/projects'
 import Seo from './Seo'
+import ArrowLink from './ArrowLink'
 import { creativeWorkLd, breadcrumbLd } from '../lib/structuredData'
 
 const fadeUp = {
@@ -55,12 +56,9 @@ export default function ProjectPage() {
           <h1 className="font-display text-4xl text-content">
             Projekt nicht gefunden
           </h1>
-          <Link
-            to="/"
-            className="mt-6 inline-block font-body text-sm text-accent underline underline-offset-4"
-          >
+          <ArrowLink to="/" arrow="left" className="mt-6">
             Zurück zur Startseite
-          </Link>
+          </ArrowLink>
         </div>
       </div>
     )
@@ -167,15 +165,9 @@ export default function ProjectPage() {
             {project.externalLink && (
               <>
                 <div className="h-4 w-px bg-stroke" />
-                <a
-                  href={project.externalLink.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-body text-sm text-accent underline underline-offset-4 transition-colors hover:text-content"
-                  data-hover
-                >
-                  {project.externalLink.label} ↗
-                </a>
+                <ArrowLink href={project.externalLink.url} arrow="external">
+                  {project.externalLink.label}
+                </ArrowLink>
               </>
             )}
           </motion.div>
