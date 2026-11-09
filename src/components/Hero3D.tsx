@@ -20,7 +20,10 @@ export default function Hero3D() {
       <pointLight position={[-3, -2, -4]} intensity={1.2} color="#FB7751" />
       <pointLight position={[3, 3, -3]} intensity={0.6} color="#FB7751" />
       <Suspense fallback={null}>
-        <Environment preset="city" />
+        {/* Self-hosted HDRI (was preset="city", which fetched the same file
+            from raw.githack.com on every visit → third-party request).
+            Source: Poly Haven "Potsdamer Platz", CC0. */}
+        <Environment files="/hdri/potsdamer_platz_1k.hdr" />
       </Suspense>
       <Logo3D />
     </Canvas>
