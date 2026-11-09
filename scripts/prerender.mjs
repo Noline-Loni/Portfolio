@@ -59,6 +59,21 @@ const routes = [
     changefreq: 'yearly',
     jsonLd: [creativeWorkLd(p), breadcrumbLd(p)],
   })),
+  // Legal pages: prerendered (so they work without JS and on direct load) but
+  // noindex + left out of the sitemap — the Impressum contains a home address.
+  ...[
+    {
+      path: '/impressum',
+      title: `Impressum · ${SITE_NAME}`,
+      description: 'Impressum von nolinelindor.com — Anbieterkennzeichnung nach § 5 DDG.',
+    },
+    {
+      path: '/datenschutz',
+      title: `Datenschutzerklärung · ${SITE_NAME}`,
+      description:
+        'Datenschutzerklärung von nolinelindor.com — welche Daten beim Besuch verarbeitet werden und welche Rechte du hast.',
+    },
+  ].map((r) => ({ ...r, type: 'website', image: null, jsonLd: [], noindex: true })),
 ]
 
 // --- 3. Per-route static HTML ---
@@ -79,6 +94,7 @@ function headTags(route) {
   return [
     `<meta name="description" content="${esc(route.description)}" data-rh="true" />`,
     `<link rel="canonical" href="${url}" data-rh="true" />`,
+    ...(route.noindex ? [`<meta name="robots" content="noindex, follow" data-rh="true" />`] : []),
     `<meta property="og:type" content="${route.type}" data-rh="true" />`,
     `<meta property="og:site_name" content="${SITE_NAME}" data-rh="true" />`,
     `<meta property="og:title" content="${esc(route.title)}" data-rh="true" />`,
@@ -114,6 +130,7 @@ const sitemap =
   `<?xml version="1.0" encoding="UTF-8"?>\n` +
   `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
   routes
+    .filter((r) => !r.noindex)
     .map(
       (r) =>
         `  <url>\n    <loc>${SITE_URL}${r.path}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${r.changefreq}</changefreq>\n    <priority>${r.priority}</priority>\n  </url>`

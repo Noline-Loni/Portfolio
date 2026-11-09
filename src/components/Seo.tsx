@@ -11,6 +11,8 @@ interface SeoProps {
   image?: string
   type?: 'website' | 'article'
   jsonLd?: object | object[]
+  /** Keep the page out of search results (e.g. Impressum with home address). */
+  noindex?: boolean
 }
 
 export default function Seo({
@@ -20,6 +22,7 @@ export default function Seo({
   image,
   type = 'website',
   jsonLd,
+  noindex = false,
 }: SeoProps) {
   // Normalise home to a trailing slash so the runtime canonical matches the
   // prerendered one exactly (avoids conflicting canonicals).
@@ -36,6 +39,7 @@ export default function Seo({
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={url} />
+      {noindex && <meta name="robots" content="noindex, follow" />}
 
       <meta property="og:type" content={type} />
       <meta property="og:site_name" content={SITE_NAME} />

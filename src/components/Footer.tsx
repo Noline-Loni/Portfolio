@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const charVariants = {
@@ -131,6 +132,14 @@ export default function Footer() {
           transition={{ duration: 0.6, delay: isHovered ? 0.4 : 0 }}
         >
           &copy; {new Date().getFullYear()} Noline Lindor
+          <span aria-hidden className="mx-2 opacity-50">·</span>
+          <Link to="/impressum" className="underline-offset-4 hover:underline" data-hover>
+            Impressum
+          </Link>
+          <span aria-hidden className="mx-2 opacity-50">·</span>
+          <Link to="/datenschutz" className="underline-offset-4 hover:underline" data-hover>
+            Datenschutz
+          </Link>
         </motion.span>
 
         <div className="flex flex-wrap items-center gap-5 md:gap-7">

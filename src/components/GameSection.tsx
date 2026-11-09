@@ -65,16 +65,18 @@ export default function GameSection() {
             <div className="crt-monitor">
               <div className="crt-bezel">
                 <div className="crt-screen group-hover:crt-screen--active">
-                  {/* Game preview via iframe (non-interactive, visual only) */}
-                  <iframe
-                    src="https://space-jump-ten.vercel.app"
-                    title="Space Jump Vorschau"
-                    className="crt-iframe"
+                  {/* Static preview instead of a live iframe: the game itself loads
+                      Google Fonts, so embedding it would send every visitor's IP
+                      to Google. The link opens the real game in a new tab. */}
+                  <img
+                    src="/images/game/space-jump-vorschau.webp"
+                    alt="Startbildschirm von Space Jump: brauner Pixel-Charakter im Weltraum, Schriftzug SPACE JUMP und PRESS SPACE"
+                    width={960}
+                    height={720}
                     loading="lazy"
-                    tabIndex={-1}
+                    decoding="async"
+                    className="crt-iframe object-cover"
                   />
-                  {/* Click overlay to block iframe interaction */}
-                  <div className="absolute inset-0 z-[1]" />
                   <div className="crt-scanlines" />
                   <div className="crt-glare" />
                   {/* Play button overlay */}

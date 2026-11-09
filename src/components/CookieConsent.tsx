@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ga4Available, loadGA4 } from '../lib/analytics'
-
-const STORAGE_KEY = 'nl-analytics-consent'
+import { ga4Available, loadGA4, CONSENT_KEY as STORAGE_KEY } from '../lib/analytics'
 
 /**
  * GDPR-friendly opt-in consent banner. Nothing tracking-related loads until the
@@ -46,8 +45,16 @@ export default function CookieConsent() {
           aria-label="Cookie-Einstellungen"
         >
           <p className="font-body text-sm leading-relaxed text-content-secondary">
-            Diese Seite nutzt anonymisierte Statistik (Google Analytics), um zu
-            verstehen, was ankommt — nur mit deiner Zustimmung.
+            Diese Seite nutzt Statistik (Google Analytics), um zu verstehen, was
+            ankommt — nur mit deiner Zustimmung. Du kannst sie jederzeit in der{' '}
+            <Link
+              to="/datenschutz"
+              className="text-content underline underline-offset-2 hover:text-accent"
+              data-hover
+            >
+              Datenschutzerklärung
+            </Link>{' '}
+            widerrufen.
           </p>
           <div className="mt-4 flex gap-3">
             <button
