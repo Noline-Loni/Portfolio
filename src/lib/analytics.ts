@@ -51,6 +51,15 @@ export function ga4Available(): boolean {
   return typeof GA4_ID === 'string' && /^G-/.test(GA4_ID)
 }
 
+/**
+ * Sends a GA4 event — only if the visitor consented and gtag is loaded.
+ * Without consent this is a silent no-op.
+ */
+export function trackEvent(name: string, params: Record<string, string | number> = {}): void {
+  if (!loaded || getConsent() !== 'granted' || typeof window.gtag !== 'function') return
+  window.gtag('event', name, params)
+}
+
 /** Loads gtag.js and configures GA4. Only call after the user has consented. */
 export function loadGA4(): void {
   if (loaded || !ga4Available()) return

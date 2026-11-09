@@ -19,6 +19,7 @@ import FAQ from './components/FAQ'
 import CookieConsent from './components/CookieConsent'
 import BackToTop from './components/BackToTop'
 import { Impressum, Datenschutz } from './components/Legal'
+import Kennenlernen from './components/Kennenlernen'
 import { setLenis, scrollToTop, prefersReducedMotion } from './lib/scroll'
 import { SITE_TITLE, SITE_DESCRIPTION } from './lib/site'
 import { personLd, websiteLd, faqLd } from './lib/structuredData'
@@ -111,6 +112,7 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/project/:slug" element={<ProjectPage />} />
+        <Route path="/kennenlernen" element={<Kennenlernen />} />
         <Route path="/impressum" element={<Impressum />} />
         <Route path="/datenschutz" element={<Datenschutz />} />
       </Routes>

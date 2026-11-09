@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import ArrowLink from './ArrowLink'
 
 const words =
   'Creative Technologist an der Schnittstelle von Design, Marketing und Technologie. Ich gestalte nicht nur Interfaces und Kampagnen \u2014 ich baue die Automatisierung dahinter: Python-Skripte, API-Anbindungen, KI-Workflows und Datendashboards, die Marketing-Performance sichtbar und manuelle Prozesse \u00FCberfl\u00FCssig machen. Bochum als Basis, Projekte \u00FCberall.'.split(
@@ -52,6 +53,7 @@ export default function About() {
           <div className="pointer-events-none absolute -bottom-3 -right-3 h-16 w-16 rounded-br-2xl border-b-2 border-r-2 border-accent" />
         </motion.figure>
 
+        <div>
         {/* Main text with word-by-word reveal */}
         <p className="flex flex-wrap font-body text-xl font-light leading-relaxed text-content-secondary md:text-xl lg:text-2xl lg:leading-relaxed">
           {words.map((word, i) => (
@@ -72,6 +74,21 @@ export default function About() {
             </span>
           ))}
         </p>
+
+        {/* Teaser for the "1 Wahrheit, 1 Lüge" game */}
+        <motion.div
+          className="mt-10"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <p className="font-body text-sm text-content-tertiary">
+            Lust auf ein kurzes Kennenlern-Spiel?{' '}
+            <ArrowLink to="/kennenlernen">1 Wahrheit, 1 Lüge</ArrowLink>
+          </p>
+        </motion.div>
+        </div>
         </div>
 
         {/* Decorative accent line */}
