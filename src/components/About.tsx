@@ -26,8 +26,34 @@ export default function About() {
           </span>
         </motion.div>
 
+        <div className="grid items-start gap-10 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:gap-14 lg:gap-20">
+        {/* Portrait */}
+        <motion.figure
+          className="relative mx-auto w-full max-w-[280px] md:max-w-none"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-[0_30px_60px_-20px_rgba(0,0,0,0.6)]">
+            <img
+              src="/images/about/noline-lindor-portrait.webp"
+              srcSet="/images/about/noline-lindor-portrait-600.webp 600w, /images/about/noline-lindor-portrait.webp 1200w"
+              sizes="(min-width: 768px) 40vw, 280px"
+              width={1200}
+              height={1500}
+              alt="Porträt von Noline Lindor"
+              loading="lazy"
+              decoding="async"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          {/* Coral accent corner */}
+          <div className="pointer-events-none absolute -bottom-3 -right-3 h-16 w-16 rounded-br-2xl border-b-2 border-r-2 border-accent" />
+        </motion.figure>
+
         {/* Main text with word-by-word reveal */}
-        <p className="flex flex-wrap font-body text-xl font-light leading-relaxed text-content-secondary md:text-2xl lg:text-3xl lg:leading-relaxed">
+        <p className="flex flex-wrap font-body text-xl font-light leading-relaxed text-content-secondary md:text-xl lg:text-2xl lg:leading-relaxed">
           {words.map((word, i) => (
             <span key={i} className="mr-[0.3em] inline-block overflow-hidden">
               <motion.span
@@ -46,6 +72,7 @@ export default function About() {
             </span>
           ))}
         </p>
+        </div>
 
         {/* Decorative accent line */}
         <motion.div
