@@ -299,8 +299,8 @@ export const projects: Project[] = [
         type: 'image-grid',
         images: [
           {
-            src: '/images/works/haiti-med/08_2025-Instagram_Post_HaitiKonbit2025_Vormerken_1080x1080px.webp',
-            alt: 'Haiti Konbit 2025 Instagram Post',
+            src: '/images/works/haiti-med/2026_09-Instagram_Post_HaitiKonbit2026_Kuenstlerspotlight-TiCorn_1080x1080px.webp',
+            alt: 'Haiti Konbit 2026 Künstlerspotlight TiCorn',
           },
           {
             src: '/images/works/haiti-med/2025_08-Instagram_Post_HaitiKonbit2025_Kuenstlerspotlight-WAWA_1080x1080px.webp',
