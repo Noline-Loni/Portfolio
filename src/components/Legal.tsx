@@ -267,7 +267,7 @@ export function Datenschutz() {
       </P>
       <P>
         Google Analytics speichert Cookies (<code className="text-content">_ga</code>,{' '}
-        <code className="text-content">_ga_&lt;ID&gt;</code>, Laufzeit bis zu 2
+        <code className="text-content">_ga_ZVSL24D3NM</code>, Laufzeit bis zu 2
         Jahre) und erfasst Informationen über deine Nutzung der Seite, etwa
         aufgerufene Seiten, Verweildauer, ungefährer Standort (Land/Stadt),
         Gerätetyp, Browser und die Herkunft des Besuchs. In Google Analytics 4
