@@ -84,6 +84,14 @@ const routes = [
       description:
         'Datenschutzerklärung von nolinelindor.com — welche Daten beim Besuch verarbeitet werden und welche Rechte du hast.',
     },
+    // 404: written as dist/404.html, which Vercel serves for unknown paths
+    // (with status 404); the SPA then renders the NotFound page client-side.
+    {
+      path: '/404',
+      outFile: '404.html',
+      title: `Sackgasse · ${SITE_NAME}`,
+      description: 'Diese Seite gibt es nicht – aber eine Mauer, die du umwerfen kannst.',
+    },
   ].map((r) => ({ ...r, type: 'website', image: null, jsonLd: [], noindex: true })),
 ]
 
@@ -127,8 +135,9 @@ for (const route of routes) {
   const html = template
     .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(route.title)}</title>`)
     .replace('</head>', `    ${headTags(route)}\n  </head>`)
-  const outPath =
-    route.path === '/'
+  const outPath = route.outFile
+    ? resolve(DIST, route.outFile)
+    : route.path === '/'
       ? resolve(DIST, 'index.html')
       : resolve(DIST, route.path.replace(/^\//, ''), 'index.html')
   mkdirSync(dirname(outPath), { recursive: true })

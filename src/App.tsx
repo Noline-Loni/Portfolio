@@ -20,6 +20,7 @@ import CookieConsent from './components/CookieConsent'
 import BackToTop from './components/BackToTop'
 import { Impressum, Datenschutz } from './components/Legal'
 import Kennenlernen from './components/Kennenlernen'
+import NotFound from './components/NotFound'
 import { setLenis, scrollToTop, prefersReducedMotion } from './lib/scroll'
 import { SITE_TITLE, SITE_DESCRIPTION } from './lib/site'
 import { personLd, websiteLd, faqLd } from './lib/structuredData'
@@ -115,6 +116,7 @@ function AppContent() {
         <Route path="/kennenlernen" element={<Kennenlernen />} />
         <Route path="/impressum" element={<Impressum />} />
         <Route path="/datenschutz" element={<Datenschutz />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <CookieConsent />
       <BackToTop />
