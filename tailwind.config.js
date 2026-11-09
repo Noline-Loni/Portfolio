@@ -14,7 +14,8 @@ export default {
         content: {
           DEFAULT: '#F5F5EF',
           secondary: '#D5D5D5',
-          tertiary: '#8A8A8A',
+          // #A3A3A3 ≈ 4.9:1 on #353535 (WCAG AA for small text); was #8A8A8A ≈ 3.5:1
+          tertiary: '#A3A3A3',
         },
         accent: {
           DEFAULT: '#FB7751',

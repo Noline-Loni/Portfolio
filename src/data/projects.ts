@@ -77,7 +77,7 @@ export const projects: Project[] = [
       {
         type: 'image',
         src: '/images/works/lubalabs/Logo Mockup_LubaLabs_erweitert.webp',
-        alt: 'Luba Labs Logo auf strukturiertem braunem Hintergrund',
+        alt: 'Luba Labs Logo in Gold und Creme auf einer dunkelbraunen Karte vor grünen, diagonal geschichteten Papierflächen',
       },
       {
         type: 'text',
@@ -90,11 +90,11 @@ export const projects: Project[] = [
         images: [
           {
             src: '/images/works/lubalabs/LubaLabs_Logo_gold-darkblack.webp',
-            alt: 'Luba Labs Logo Gold auf Schwarz',
+            alt: 'Luba Labs Logo: goldenes, labyrinthartiges Logomark mit schwarzem Schriftzug LUBA LABS',
           },
           {
             src: '/images/works/lubalabs/LubaLabs_Logo_gold-creme.webp',
-            alt: 'Luba Labs Logo Gold auf Creme',
+            alt: 'Luba Labs Logo: goldenes, labyrinthartiges Logomark mit cremefarbenem Schriftzug LUBA LABS',
           },
         ],
       },
@@ -107,7 +107,7 @@ export const projects: Project[] = [
       {
         type: 'image',
         src: '/images/works/lubalabs/LubaLabs_Jewelry_3D_new-Kamera.webp',
-        alt: 'Luba Labs Schmuck 3D-Rendering — goldene Ohrringe',
+        alt: '3D-Rendering: zwei goldene Ohrringe in Form des Luba-Labs-Logomarks, hängend auf einem Betonblock vor olivgrünem Hintergrund',
       },
       {
         type: 'text',
@@ -120,18 +120,18 @@ export const projects: Project[] = [
         images: [
           {
             src: '/images/works/lubalabs/Clothing Package mock up_LubaLabs_hoch.webp',
-            alt: 'Luba Labs Verpackungs-Mockup',
+            alt: 'Dunkelbraune Schmuckbox mit geometrischem Muster, goldenem Logomark und Luba-Labs-Schriftzug auf beigem Untergrund',
           },
           {
             src: '/images/works/lubalabs/Clothing Label mock up_LubaLabs.webp',
-            alt: 'Luba Labs Clothing Label Mockup',
+            alt: 'Zwei cremefarbene Kleidungsanhänger an Kordeln: vorne das goldene Luba-Labs-Logo, hinten „Nachhaltige Bekleidung aus Kongo“',
           },
         ],
       },
       {
         type: 'image',
         src: '/images/works/lubalabs/Letter Mockup_LubaLabs.webp',
-        alt: 'Luba Labs Geschäftsbrief Mockup',
+        alt: 'Hand hält eine Luba-Labs-Rechnung mit goldenem Logo und grauem Labyrinthmuster vor dunkelbraunem Hintergrund',
       },
       {
         type: 'text',
@@ -142,7 +142,7 @@ export const projects: Project[] = [
       {
         type: 'image',
         src: '/images/works/lubalabs/IG_Mockup_LubaLabs.webp',
-        alt: 'Luba Labs Instagram Mockup mit Posts und Stories',
+        alt: 'Luba Labs Instagram-Auftritt: Smartphone mit Story „Tradition trifft Moderne“ und drei Posts, darunter „Dafür stehen wir“ und ein Nachhaltigkeits-Zitat',
       },
     ],
     nextProject: 'cremas-lakay',
@@ -169,7 +169,7 @@ export const projects: Project[] = [
       {
         type: 'image',
         src: '/images/works/cremas-lakay/Logo.webp',
-        alt: 'Cremas Lakay Logo',
+        alt: 'Cremas Lakay Logo als handgeschriebener, pinselartiger Schriftzug in Creme',
       },
       {
         type: 'text',
@@ -180,7 +180,7 @@ export const projects: Project[] = [
       {
         type: 'image',
         src: '/images/works/cremas-lakay/Moodboard-30.webp',
-        alt: 'Cremas Lakay Moodboard — Haitianische Inspirationen und Farbpalette',
+        alt: 'Moodboard: Kokoslikör-Drinks mit Zimt, farbenfrohe haitianische Malerei mit Marktszenen, bunte Häuser, Handschrift-Typo und eine Palette aus Braun-, Beige- und Orangetönen',
       },
       {
         type: 'text',
@@ -191,18 +191,18 @@ export const projects: Project[] = [
       {
         type: 'image',
         src: '/images/works/cremas-lakay/CL_Bottle_Mockup_2cremas.webp',
-        alt: 'Cremas Lakay Flaschen-Mockup Vorderseite',
+        alt: 'Cremas-Lakay-Flasche mit cremeweißem Likör und kupferbraunem Etikett, vorne, auf Sand vor einem dunklen Palmblatt',
       },
       {
         type: 'image-grid',
         images: [
           {
             src: '/images/works/cremas-lakay/CL_Bottle_Mockup_2cremas_hinten.webp',
-            alt: 'Cremas Lakay Flaschen-Mockup Rückseite',
+            alt: 'Rückseite der Cremas-Lakay-Flasche mit Etikett-Text, auf Sand vor einem dunklen Palmblatt',
           },
           {
             src: '/images/works/cremas-lakay/CL_Box-Mockup_4zu3.webp',
-            alt: 'Cremas Lakay Geschenkbox Mockup',
+            alt: 'Geschenkbox aus Karton in Sandfarbe mit verspieltem Linienmuster und rundem CL-Monogramm, an der Seite der Cremas-Lakay-Schriftzug',
           },
         ],
       },
@@ -215,23 +215,23 @@ export const projects: Project[] = [
       {
         type: 'image',
         src: '/images/works/cremas-lakay/Anzeige_Mockup.webp',
-        alt: 'Cremas Lakay Anzeigen-Mockup',
+        alt: 'Plakat an einer Bushaltestelle: „Gönn’ dir einen Schluck Karibik“ mit Cremas-Lakay-Flasche, Palmblättern und Kokosnuss',
       },
       {
         type: 'image',
         src: '/images/works/cremas-lakay/Web 1920 – 2.webp',
-        alt: 'Cremas Lakay Branding Übersicht und CI-Styleguide',
+        alt: 'Web-Banner: „Gönn’ dir einen Schluck Karibik“, Cremas-Lakay-Flasche mit Kokosnuss und Palmblättern, Slogan „Vegan, Natürlich, Lecker“ und Button „Jetzt eintauchen“',
       },
       {
         type: 'image-grid',
         images: [
           {
             src: '/images/works/cremas-lakay/Instagram-Post – 3.webp',
-            alt: 'Cremas Lakay Instagram Post',
+            alt: 'Instagram-Story im Hochformat: „Gönn’ dir einen Schluck Karibik“ mit Cremas-Lakay-Flasche zwischen Palmblättern',
           },
           {
             src: '/images/works/cremas-lakay/Instagram-Post – 4.webp',
-            alt: 'Cremas Lakay Instagram Post',
+            alt: 'Quadratischer Instagram-Post: „Gönn’ dir einen Schluck Karibik“ mit Cremas-Lakay-Flasche und Button „Jetzt eintauchen“',
           },
         ],
       },
@@ -260,7 +260,7 @@ export const projects: Project[] = [
       {
         type: 'image',
         src: '/images/works/haiti-med/before-after.webp',
-        alt: 'Haiti-Med Logo Vorher-Nachher Vergleich',
+        alt: 'Vorher-Nachher: links das alte, verpixelte Haiti-Med-Logo mit zu kleiner Schrift, rechts das neue Logo mit klarer Schrift in mehreren Anwendungen',
       },
       {
         type: 'text',
@@ -277,12 +277,12 @@ export const projects: Project[] = [
       {
         type: 'image',
         src: '/images/works/haiti-med/redesign-overview.webp',
-        alt: 'Redesign Übersicht mit Logo-Variationen und CI-System',
+        alt: 'Redesign-Übersicht: altes Logo mit Schwachstellen, daneben vier neue Logo-Varianten in Farbe, Weiß und Schwarz sowie Typo-Hierarchie und Farbpalette mit rotem CTA',
       },
       {
         type: 'image',
         src: '/images/works/haiti-med/ci-guidelines.webp',
-        alt: 'Corporate Identity Guidelines mit Typografie und Farbpalette',
+        alt: 'CI-Guidelines von Haiti-Med: Logo- und Logomark-Varianten, Schrift Rubik in vier Schnitten und sieben Markenfarben von Rot über Petrol bis Gelb',
       },
       {
         type: 'text',
@@ -293,18 +293,18 @@ export const projects: Project[] = [
       {
         type: 'image',
         src: '/images/works/haiti-med/social-media.webp',
-        alt: 'Social Media Posts und Mobile Mockups für Haiti-Med e.V.',
+        alt: 'Haiti Konbit 2024 in Anwendung: Instagram-Story mit haitianischem Essen, Website auf dem Smartphone und zwei Posts „Dieses Kulturfest ist bereits Tradition“',
       },
       {
         type: 'image-grid',
         images: [
           {
             src: '/images/works/haiti-med/2026_09-Instagram_Post_HaitiKonbit2026_Kuenstlerspotlight-TiCorn_1080x1080px.webp',
-            alt: 'Haiti Konbit 2026 Künstlerspotlight TiCorn',
+            alt: 'Instagram-Post Künstler-Spotlight Haiti Konbit 2026: Sängerin TiCorn mit Gitarre im Grünen, Termin 3. Oktober 2026 in Düsseldorf-Eller, Eintritt frei',
           },
           {
             src: '/images/works/haiti-med/2025_08-Instagram_Post_HaitiKonbit2025_Kuenstlerspotlight-WAWA_1080x1080px.webp',
-            alt: 'Haiti Konbit 2025 Künstlerspotlight',
+            alt: 'Instagram-Post Künstler-Spotlight Haiti Konbit 2025: Sänger und Saxophonist WAWA auf der Bühne, Termin 4. Oktober 2025, Eintritt frei',
           },
         ],
       },
@@ -344,7 +344,7 @@ export const projects: Project[] = [
       {
         type: 'image',
         src: '/images/works/nutrition-pets/overview.webp',
-        alt: 'NUTRITIONfurPETS App Screens Übersicht',
+        alt: 'Übersicht der NUTRITIONfurPETS-App in Grün und Beige: Haustier anlegen, Startseite mit Hund Bello, Nährwert-Diagramm und Bestätigung „Meal is Added!“',
       },
       {
         type: 'text',
@@ -357,11 +357,11 @@ export const projects: Project[] = [
         images: [
           {
             src: '/images/works/nutrition-pets/Gruppe maskieren 25.webp',
-            alt: 'Crazy Eights Skizzen',
+            alt: 'Crazy-Eights-Handskizzen in acht Feldern: Barcode-Scanner, Haustier wählen, Foto, Sprachen, Futtertipps, Medikamenten-Erinnerung, Profildaten, Wechsel zur Futter-Liefer-App',
           },
           {
             src: '/images/works/nutrition-pets/Web 1920 – 3.webp',
-            alt: 'NUTRITIONfurPETS Wireframes',
+            alt: 'Graustufen-Wireframes von vier Screens: Startseite, Haustierprofil mit Nährwerten, Mahlzeit hinzufügen und Haustier anlegen',
           },
         ],
       },
@@ -374,7 +374,7 @@ export const projects: Project[] = [
       {
         type: 'image',
         src: '/images/works/nutrition-pets/Web 1920 – 4.webp',
-        alt: 'NUTRITIONfurPETS High-Fidelity Screens',
+        alt: 'Acht High-Fidelity-Screens der App: Haustier anlegen, Startseite, Profil mit Nährwerten, Mahlzeit hinzufügen, Bestätigung, Menü und QR-Code-Scanner',
       },
     ],
     nextProject: 'luba-labs',

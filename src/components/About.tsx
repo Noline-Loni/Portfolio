@@ -42,7 +42,7 @@ export default function About() {
               sizes="(min-width: 768px) 40vw, 280px"
               width={1200}
               height={1500}
-              alt="Porträt von Noline Lindor"
+              alt="Noline Lindor lächelt in die Kamera, lange dunkle Haare, gepunktete Bluse, vor dunkelgrauem Hintergrund"
               loading="lazy"
               decoding="async"
               className="h-full w-full object-cover"
