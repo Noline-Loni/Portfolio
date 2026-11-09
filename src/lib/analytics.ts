@@ -9,6 +9,43 @@ declare global {
 
 let loaded = false
 
+/** localStorage key holding the visitor's analytics choice ('granted' | 'denied'). */
+export const CONSENT_KEY = 'nl-analytics-consent'
+
+/** Current stored choice, or null if the visitor has not decided yet. */
+export function getConsent(): 'granted' | 'denied' | null {
+  try {
+    const v = localStorage.getItem(CONSENT_KEY)
+    return v === 'granted' || v === 'denied' ? v : null
+  } catch {
+    return null
+  }
+}
+
+/**
+ * Withdraw consent: store 'denied', delete the GA cookies on this domain and
+ * reload so gtag.js is no longer running.
+ */
+export function revokeConsent(): void {
+  try {
+    localStorage.setItem(CONSENT_KEY, 'denied')
+  } catch {
+    /* storage blocked: nothing stored, nothing to revoke */
+  }
+  const host = window.location.hostname
+  const domains = ['', host, `.${host.replace(/^www\./, '')}`]
+  document.cookie
+    .split(';')
+    .map((c) => c.split('=')[0].trim())
+    .filter((name) => name === '_ga' || name.startsWith('_ga_'))
+    .forEach((name) =>
+      domains.forEach((d) => {
+        document.cookie = `${name}=; Max-Age=0; path=/${d ? `; domain=${d}` : ''}`
+      })
+    )
+  window.location.reload()
+}
+
 /** True when a GA4 Measurement ID (G-XXXX) is configured via VITE_GA4_ID. */
 export function ga4Available(): boolean {
   return typeof GA4_ID === 'string' && /^G-/.test(GA4_ID)
