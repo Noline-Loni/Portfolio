@@ -119,7 +119,7 @@ export const projects: Project[] = [
         type: 'image-grid',
         images: [
           {
-            src: '/images/works/lubalabs/Clothing Package mock up_LubaLabs_neu.webp',
+            src: '/images/works/lubalabs/Clothing Package mock up_LubaLabs_hoch.webp',
             alt: 'Luba Labs Verpackungs-Mockup',
           },
           {
