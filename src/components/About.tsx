@@ -84,7 +84,7 @@ export default function About() {
           transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
         >
           <p className="font-body text-sm text-content-tertiary">
-            Lieber spielen als lesen?{' '}
+            Lust auf ein kurzes Kennenlern-Spiel?{' '}
             <ArrowLink to="/kennenlernen">1 Wahrheit, 1 Lüge</ArrowLink>
           </p>
         </motion.div>
