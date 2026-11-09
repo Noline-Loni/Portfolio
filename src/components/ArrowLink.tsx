@@ -19,6 +19,8 @@ interface ArrowLinkProps {
   href?: string
   onClick?: () => void
   className?: string
+  /** 'dark' = on light (cream) surfaces: dark text, coral underline & arrow (contrast) */
+  tone?: 'light' | 'dark'
 }
 
 const GLYPH: Record<Arrow, string> = { right: '→', left: '←', external: '↗' }
@@ -35,19 +37,28 @@ export default function ArrowLink({
   href,
   onClick,
   className = '',
+  tone = 'light',
 }: ArrowLinkProps) {
-  const base = `group inline-flex items-baseline gap-2 font-body text-sm text-accent transition-colors duration-fast hover:text-content ${className}`
+  const dark = tone === 'dark'
+  const color = dark
+    ? 'font-medium text-surface-deep hover:text-surface-deep'
+    : 'text-accent hover:text-content'
+  const base = `group inline-flex items-baseline gap-2 font-body text-sm transition-colors duration-fast ${color} ${className}`
 
   const glyph = (
     <span
       aria-hidden
-      className={`inline-block transition-transform duration-fast ease-smooth ${NUDGE[arrow]}`}
+      className={`inline-block transition-transform duration-fast ease-smooth ${NUDGE[arrow]} ${dark ? 'text-accent' : ''}`}
     >
       {GLYPH[arrow]}
     </span>
   )
   const label = (
-    <span className="underline decoration-accent/60 underline-offset-4 transition-colors group-hover:decoration-content">
+    <span
+      className={`underline underline-offset-4 transition-colors ${
+        dark ? 'decoration-accent group-hover:decoration-surface-deep' : 'decoration-accent/60 group-hover:decoration-content'
+      }`}
+    >
       {children}
     </span>
   )

@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion
 import { getProject, getNextProject } from '../data/projects'
 import Seo from './Seo'
 import ArrowLink from './ArrowLink'
+import NotFound from './NotFound'
 import { creativeWorkLd, breadcrumbLd } from '../lib/structuredData'
 
 const fadeUp = {
@@ -45,24 +46,9 @@ export default function ProjectPage() {
     document.body.scrollTop = 0
   }, [slug])
 
-  if (!project) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-surface">
-        <Seo
-          title="Projekt nicht gefunden — Noline Lindor"
-          description="Diese Seite existiert nicht."
-        />
-        <div className="text-center">
-          <h1 className="font-display text-4xl text-content">
-            Projekt nicht gefunden
-          </h1>
-          <ArrowLink to="/" arrow="left" className="mt-6">
-            Zurück zur Startseite
-          </ArrowLink>
-        </div>
-      </div>
-    )
-  }
+  // Unknown project slug → the same playful 404 as every other dead end
+  if (!project) return <NotFound />
+
 
   const isAutomation = project.kind === 'automation'
   const hasCover = !!project.cover
