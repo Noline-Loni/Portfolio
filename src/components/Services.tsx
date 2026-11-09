@@ -32,6 +32,10 @@ const categories = [
         desc: 'Python-Skripte und API-Anbindungen, die manuelle Prozesse eliminieren.',
       },
       {
+        name: 'KI-Workflows',
+        desc: 'Claude- und n8n-Workflows, eigene Agenten und Skills, die wiederkehrende Arbeit übernehmen.',
+      },
+      {
         name: 'Performance Marketing',
         desc: 'Google Ads, Meta Ads und datenbasierte Kampagnensteuerung.',
       },

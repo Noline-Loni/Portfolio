@@ -15,7 +15,7 @@ export const personLd = {
   image: `${SITE_URL}/og-image.jpg`,
   email: 'mailto:nolinelindor@gmail.com',
   description:
-    'Creative Technologist an der Schnittstelle von Design, Marketing und Technologie — UI/UX Design, Marketing Automation und datengetriebene Dashboards.',
+    'Creative Technologist an der Schnittstelle von Design, Marketing und Technologie — UI/UX Design, KI-gestützte Marketing Automation und datengetriebene Dashboards.',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Bochum',
@@ -24,6 +24,9 @@ export const personLd = {
   knowsAbout: [
     'UI/UX Design',
     'Marketing Automation',
+    'KI-Workflows',
+    'Claude',
+    'n8n',
     'Performance Marketing',
     'Python',
     'Meta Marketing API',

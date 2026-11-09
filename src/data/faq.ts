@@ -16,7 +16,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: 'Welche Leistungen bietet Noline Lindor an?',
-    a: 'Im kreativen Bereich: UI/UX Design, Brand Identity und 3D-Visualisierung. Im technischen Bereich: Marketing Automation (Python, Meta Marketing API, Google Ads Scripts), Performance Marketing (Google & Meta Ads) sowie datengetriebene KPI-Dashboards. Der Schwerpunkt liegt darauf, wiederkehrende Marketing-Prozesse zu automatisieren und Design mit Technik zu verbinden.',
+    a: 'Im kreativen Bereich: UI/UX Design, Brand Identity und 3D-Visualisierung. Im technischen Bereich: Marketing Automation (Python, Meta Marketing API, Google Ads Scripts), KI-Workflows (Claude, n8n, eigene Agenten), Performance Marketing (Google & Meta Ads) sowie datengetriebene KPI-Dashboards. Der Schwerpunkt liegt darauf, wiederkehrende Marketing-Prozesse zu automatisieren und Design mit Technik zu verbinden.',
   },
   {
     q: 'Was unterscheidet Noline Lindor von einer klassischen Designerin?',
@@ -24,7 +24,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: 'Mit welchen Tools und Technologien arbeitet Noline Lindor?',
-    a: 'Design: Figma, Adobe XD, Photoshop, InDesign und Blender. Technik: Python, JavaScript/Node.js, React, PostgreSQL und REST-APIs (u. a. die Meta Marketing API), Google Ads Scripts sowie KI-Tools wie Claude für eigene Agenten und Automatisierungen.',
+    a: 'Design: Figma, Adobe XD, Photoshop, InDesign und Blender. Technik: Python, JavaScript/Node.js, React, PostgreSQL und REST-APIs (u. a. die Meta Marketing API), Google Ads Scripts. KI und Workflows: Claude, n8n und Cursor für eigene Agenten, Skills und Automatisierungen.',
   },
   {
     q: 'Ist Noline Lindor für neue Projekte verfügbar?',
