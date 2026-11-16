@@ -5,7 +5,7 @@ import { projects } from '../data/projects'
 import { scrollToTop } from '../lib/scroll'
 
 const links = [
-  { label: 'Leistungen', href: '/#services' },
+  { label: 'Skills', href: '/#services' },
   { label: 'Projekte', href: '/#work' },
   { label: 'Über mich', href: '/#about' },
   { label: 'Kontakt', href: '/#contact' },

@@ -72,7 +72,7 @@ export default function Services() {
       >
         <div className="h-2 w-2 rounded-full bg-accent" />
         <span className="font-body text-xs uppercase tracking-[0.3em] text-content-tertiary">
-          Leistungen
+          Skills
         </span>
       </motion.div>
 
