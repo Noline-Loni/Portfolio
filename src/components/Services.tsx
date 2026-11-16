@@ -95,7 +95,7 @@ export default function Services() {
               <span className="font-body text-xs text-content-tertiary">
                 {cat.number}
               </span>
-              <h2 className="font-display text-3xl md:text-4xl">
+              <h2 className="font-display text-3xl md:text-[clamp(2.5rem,5vw,4rem)] md:leading-[1.05]">
                 {cat.title}
               </h2>
             </motion.div>

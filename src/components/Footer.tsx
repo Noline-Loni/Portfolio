@@ -134,7 +134,7 @@ export default function Footer() {
 
       {/* Bottom row */}
       <motion.div
-        className="absolute bottom-8 left-6 right-6 z-40 flex flex-col items-center justify-between gap-4 md:flex-row md:px-6 lg:px-18"
+        className="absolute bottom-8 left-6 right-6 z-40 flex flex-col items-center justify-between gap-4 md:px-6 lg:flex-row lg:pr-20"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}

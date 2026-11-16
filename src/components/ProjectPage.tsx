@@ -464,7 +464,9 @@ export default function ProjectPage() {
                 viewport={{ once: true, margin: '-60px' }}
                 custom={0}
               >
-                <p className="font-display text-2xl leading-[1.4] tracking-[-0.01em] text-content md:text-4xl">
+                {/* break-words is only a safety net: long compounds carry a
+                    soft hyphen in the data so they split at a sensible spot. */}
+                <p className="break-words font-display text-2xl leading-[1.4] tracking-[-0.01em] text-content md:text-3xl lg:text-4xl">
                   &bdquo;{section.content}&ldquo;
                 </p>
               </motion.blockquote>
