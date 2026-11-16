@@ -464,7 +464,9 @@ export default function ProjectPage() {
                 viewport={{ once: true, margin: '-60px' }}
                 custom={0}
               >
-                <p className="font-display text-2xl leading-[1.4] tracking-[-0.01em] text-content md:text-4xl">
+                {/* break-words is only a safety net: long compounds carry a
+                    soft hyphen in the data so they split at a sensible spot. */}
+                <p className="break-words font-display text-2xl leading-[1.4] tracking-[-0.01em] text-content md:text-3xl lg:text-4xl">
                   &bdquo;{section.content}&ldquo;
                 </p>
               </motion.blockquote>
@@ -500,7 +502,7 @@ export default function ProjectPage() {
                 className="group mt-6 block w-full text-center"
                 data-hover
               >
-                <h3 className="font-display text-4xl tracking-[-0.02em] text-content transition-colors duration-base group-hover:text-accent md:text-6xl lg:text-8xl">
+                <h3 className="text-balance font-display text-[min(8vw,4rem)] leading-[1.1] tracking-[-0.02em] text-content transition-colors duration-base [overflow-wrap:anywhere] group-hover:text-accent md:text-6xl lg:text-8xl">
                   {nextProject.title}
                 </h3>
                 <p className="mt-3 font-body text-sm text-content-tertiary">

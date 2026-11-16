@@ -16,24 +16,38 @@ const charVariants = {
 }
 
 function AnimatedChars({ text }: { text: string }) {
+  // Letters are grouped per word so a line can only ever break between
+  // words (never mid-word) if the headline doesn't fit, e.g. with a large
+  // system font size on phones.
+  let index = 0
+  const words = text.split(' ')
   return (
     <>
-      {text.split('').map((char, i) => (
-        <span
-          key={i}
-          className="inline-block overflow-clip px-[0.05em] py-[0.15em] -mx-[0.05em] -my-[0.15em]"
-          style={char === ' ' ? { width: '0.3em' } : undefined}
-        >
-          <motion.span
-            className="inline-block"
-            variants={charVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-            custom={i}
-          >
-            {char === ' ' ? '\u00A0' : char}
-          </motion.span>
+      {words.map((word, w) => (
+        <span key={w}>
+          <span className="inline-block whitespace-nowrap">
+            {word.split('').map((char) => {
+              const i = index++
+              return (
+                <span
+                  key={i}
+                  className="inline-block overflow-clip px-[0.05em] py-[0.15em] -mx-[0.05em] -my-[0.15em]"
+                >
+                  <motion.span
+                    className="inline-block"
+                    variants={charVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: '-60px' }}
+                    custom={i}
+                  >
+                    {char}
+                  </motion.span>
+                </span>
+              )
+            })}
+          </span>
+          {w < words.length - 1 && (index++, ' ')}
         </span>
       ))}
     </>
@@ -78,7 +92,7 @@ export default function Footer() {
 
       {/* Big headline — text color changes when expanded */}
       <motion.h2
-        className="relative z-40 text-center font-display text-display-lg tracking-[-0.03em]"
+        className="relative z-40 max-w-full text-center font-display text-[min(10vw,9rem)] leading-[0.95] tracking-[-0.03em]"
         animate={{ color: isHovered ? '#353535' : undefined }}
         transition={{ duration: 0.6, delay: isHovered ? 0.4 : 0 }}
       >
@@ -120,7 +134,7 @@ export default function Footer() {
 
       {/* Bottom row */}
       <motion.div
-        className="absolute bottom-8 left-6 right-6 z-40 flex flex-col items-center justify-between gap-4 md:flex-row md:px-6 lg:px-18"
+        className="absolute bottom-8 left-6 right-6 z-40 flex flex-col items-center justify-between gap-4 md:px-6 lg:flex-row lg:pr-20"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}

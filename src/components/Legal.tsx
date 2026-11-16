@@ -34,7 +34,7 @@ function LegalLayout({
               Rechtliches
             </span>
           </div>
-          <h1 className="font-display text-3xl tracking-[-0.01em] text-content md:text-4xl">
+          <h1 className="font-display text-[min(8.5vw,3rem)] leading-[1.1] tracking-[-0.01em] text-content md:text-4xl">
             {title}
           </h1>
           <div className="legal mt-12 font-body text-sm font-light leading-relaxed text-content-secondary md:text-base">

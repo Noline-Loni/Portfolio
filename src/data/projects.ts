@@ -600,7 +600,7 @@ registry.register({
       },
       {
         type: 'quote',
-        content: 'Aus drei Datensilos wird eine Entscheidungsgrundlage.',
+        content: 'Aus drei Datensilos wird eine Entscheidungs­grundlage.',
       },
       {
         type: 'tech-stack',
