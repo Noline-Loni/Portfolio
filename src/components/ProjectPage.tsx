@@ -5,6 +5,7 @@ import { getProject, getNextProject } from '../data/projects'
 import Seo from './Seo'
 import ArrowLink from './ArrowLink'
 import NotFound from './NotFound'
+import MetricCard from './MetricCard'
 import { creativeWorkLd, breadcrumbLd } from '../lib/structuredData'
 
 const fadeUp = {
@@ -304,22 +305,7 @@ export default function ProjectPage() {
             <section key={i} className="px-6 pb-20 md:px-12 md:pb-28 lg:px-24">
               <div className="mx-auto grid max-w-5xl grid-cols-2 gap-4 md:grid-cols-4">
                 {section.metrics?.map((m, j) => (
-                  <motion.div
-                    key={j}
-                    className="min-w-0 rounded-lg bg-surface-secondary p-5 md:p-6"
-                    variants={fadeUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: '-60px' }}
-                    custom={j * 0.4}
-                  >
-                    <div className="font-display text-3xl text-accent [overflow-wrap:anywhere] md:text-4xl">
-                      {m.value}
-                    </div>
-                    <div className="mt-2 font-body text-xs leading-snug text-content-tertiary md:text-sm">
-                      {m.label}
-                    </div>
-                  </motion.div>
+                  <MetricCard key={j} value={m.value} label={m.label} index={j} />
                 ))}
               </div>
             </section>

@@ -76,8 +76,10 @@ export default function Navbar() {
           }}
         >
           <svg
-            viewBox="0 0 1366 768"
-            className="h-6 w-auto fill-content md:h-7"
+            // Cropped to the artwork (the source canvas had wide empty margins),
+            // so the height below is the visible logo height.
+            viewBox="165 108 1005 554"
+            className="h-7 w-auto fill-content md:h-8"
             aria-label="Noline Lindor"
           >
             <path d="M351.67,268.87V376H295.81V276.42q0-18.39-9.52-28.59t-25.63-10.17q-16.1,0-25.61,10.17t-9.54,28.59V654.94H169.33V192.65h56.18V217a59.34,59.34,0,0,1,23-19.22A73.24,73.24,0,0,1,281,190.67q32.19,0,51.4,20.87T351.67,268.87Z" />
