@@ -15,8 +15,7 @@ function sizeFor(value: string): string {
 
 /**
  * Key figure on a project page. The label is always visible (touch devices
- * have no hover); hovering only adds a flourish: the figure flips once and
- * the card picks up the accent colour.
+ * have no hover); hovering only darkens the card and adds an accent border.
  */
 export default function MetricCard({
   value,
@@ -61,20 +60,11 @@ export default function MetricCard({
       }}
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
-      whileHover="hover"
-      whileTap="hover"
     >
       <div className={`font-display text-accent [overflow-wrap:anywhere] ${sizeFor(value)}`}>
         {/* Screen readers get the final value, not the running counter */}
         <span className="sr-only">{value}</span>
-        <motion.span
-          aria-hidden
-          className="inline-block"
-          style={{ transformPerspective: 600 }}
-          variants={{ hover: { rotateX: 360, transition: { duration: 0.6, ease: EASE } } }}
-        >
-          {shown}
-        </motion.span>
+        <span aria-hidden>{shown}</span>
       </div>
       <div className="mt-2 font-body text-xs leading-snug text-content-tertiary transition-colors duration-base group-hover:text-content md:text-sm">
         {label}
