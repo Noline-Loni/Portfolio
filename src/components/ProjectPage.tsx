@@ -500,7 +500,7 @@ export default function ProjectPage() {
                 className="group mt-6 block w-full text-center"
                 data-hover
               >
-                <h3 className="font-display text-4xl tracking-[-0.02em] text-content transition-colors duration-base group-hover:text-accent md:text-6xl lg:text-8xl">
+                <h3 className="text-balance font-display text-[min(8vw,4rem)] leading-[1.1] tracking-[-0.02em] text-content transition-colors duration-base [overflow-wrap:anywhere] group-hover:text-accent md:text-6xl lg:text-8xl">
                   {nextProject.title}
                 </h3>
                 <p className="mt-3 font-body text-sm text-content-tertiary">

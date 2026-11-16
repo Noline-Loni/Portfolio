@@ -61,7 +61,7 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-b from-surface/60 via-transparent to-transparent" />
 
       {/* Content */}
-      <div className="relative z-10 flex h-full flex-col justify-end px-6 pb-20 md:px-12 md:pb-28 lg:px-24 lg:pb-32">
+      <div className="relative z-10 flex h-full flex-col justify-end px-6 pb-32 md:px-12 md:pb-28 lg:px-24 lg:pb-32">
         <div className="max-w-5xl">
           <h1 className="font-display text-display leading-[0.95] tracking-[-0.02em]">
             <AnimatedWords text="Design trifft" />
@@ -124,16 +124,16 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2"
+        className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 md:bottom-8"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.8, duration: 0.6 }}
       >
-        <div className="flex flex-col items-center gap-3">
+        <div className="flex flex-col items-center gap-2 md:gap-3">
           <span className="font-body text-[10px] uppercase tracking-[0.3em] text-content-tertiary">
             Scroll
           </span>
-          <div className="animate-pulse-line h-10 w-[1px] bg-content-tertiary/50" />
+          <div className="animate-pulse-line h-6 w-[1px] bg-content-tertiary/50 md:h-10" />
         </div>
       </motion.div>
     </section>
