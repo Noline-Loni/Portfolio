@@ -623,7 +623,7 @@ registry.register({
     heroMetric: { value: '~12 h → 2 h', label: 'manuelle Arbeit pro Monat' },
     tags: ['Python', 'Meta Marketing API', 'facebook-business', 'REST'],
     intro:
-      'Jeden Monat mussten für einen Pflegekonzern mit über 100 Standorten hunderte Ad-Sets von Hand in Meta angelegt werden — ein wiederkehrender, fehleranfälliger Prozess von rund 12 Stunden. Ein Python-Skript über die Meta Marketing API erledigt das jetzt vollautomatisch.',
+      'Jeden Monat mussten für einen Pflegekonzern mit über 100 Standorten hunderte Ad-Sets von Hand in Meta angelegt werden — ein wiederkehrender, fehleranfälliger Prozess von rund 12 Stunden, der sich über zwei bis drei Tage zog. Heute legt ein Python-Skript über die Meta Marketing API alles in einem Lauf an. Übrig bleiben rund zwei Stunden Kontrolle.',
     sections: [
       {
         type: 'metrics',
@@ -631,21 +631,21 @@ registry.register({
           { value: '~12 h → 2 h', label: 'manuelle Arbeit pro Monat' },
           { value: '100+', label: 'Standorte je Lauf' },
           { value: '1', label: 'Skript statt hunderter Klicks' },
-          { value: '1×', label: 'vollautomatischer Lauf pro Monat' },
+          { value: '0', label: 'Kampagnen gehen ungeprüft live' },
         ],
       },
       {
         type: 'text',
         heading: 'Das Problem',
         content:
-          'Für die Recruiting-Kampagnen über 100+ Standorte mussten Monat für Monat hunderte Ad-Sets manuell im Meta Ads Manager dupliziert und je Standort angepasst werden — Targeting, Region, Budget. Rund zwölf Stunden monotone, fehleranfällige Klickarbeit.',
+          'Für die Recruiting-Kampagnen über 100+ Standorte mussten Monat für Monat hunderte Ad-Sets manuell im Meta Ads Manager dupliziert und je Standort angepasst werden — Targeting, Region, Budget. Rund zwölf Stunden monotone, fehleranfällige Klickarbeit, verteilt über zwei bis drei Tage.',
       },
       {
         type: 'before-after',
         before:
-          'Jeden Monat hunderte Ad-Sets von Hand in Meta anlegen und je Standort anpassen — ~12 Stunden, monoton und fehleranfällig.',
+          'Jeden Monat hunderte Ad-Sets von Hand in Meta anlegen und je Standort anpassen — ~12 Stunden über zwei bis drei Tage, monoton und fehleranfällig.',
         after:
-          'Ein Python-Skript erzeugt alle Kampagnen und Ad-Sets über die Meta Marketing API — standortgenau, in Minuten, reproduzierbar.',
+          'Ein Python-Skript legt alle Kampagnen und Ad-Sets über die Meta Marketing API an — standortgenau, pausiert und reproduzierbar. Übrig bleiben rund zwei Stunden Kontrolle.',
       },
       {
         type: 'process',
@@ -654,7 +654,7 @@ registry.register({
           { title: 'Standortdaten', desc: 'Standorte und Parameter aus einer zentralen Liste lesen.' },
           { title: 'Vorlage', desc: 'Kampagnen-Template einmal definieren.' },
           { title: 'API', desc: 'Meta Marketing API legt Kampagnen & Ad-Sets je Standort an.' },
-          { title: 'Kontrolle', desc: 'Logging und Prüfung vor dem Aktivschalten.' },
+          { title: 'Kontrolle', desc: 'Alles wird pausiert angelegt. Stichproben im Ads Manager, eine KI prüft den Lauf und alle Links. Erst dann aktiv.' },
         ],
       },
       {
@@ -667,12 +667,13 @@ for standort in standorte:
         "targeting": geo_targeting(standort["plz"], radius_km=25),
         "daily_budget": standort["budget"],
         "optimization_goal": "LEAD_GENERATION",
+        "status": "PAUSED",  # erst nach der Kontrolle aktiv
     })`,
       },
       {
         type: 'quote',
         content:
-          'Ein halber Arbeitstag im Monat wird zu einem Skriptlauf von Minuten.',
+          'Aus zwölf Stunden Klickarbeit werden zwei Stunden Kontrolle.',
       },
       {
         type: 'tech-stack',
