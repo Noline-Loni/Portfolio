@@ -15,7 +15,7 @@ export const faqs: FaqItem[] = [
     a: 'Eine Creative Technologist verbindet Design und Technik: Sie gestaltet nicht nur Interfaces und Kampagnen, sondern baut auch die Automatisierung dahinter — von UI/UX über Performance-Marketing bis zu Python-Skripten, API-Anbindungen und Datendashboards. Noline Lindor deckt damit den Weg von der ersten Idee bis zur funktionierenden, messbaren Lösung ab.',
   },
   {
-    q: 'Welche Leistungen bietet Noline Lindor an?',
+    q: 'Was kann Noline Lindor?',
     a: 'Im kreativen Bereich: UI/UX Design, Brand Identity und 3D-Visualisierung. Im technischen Bereich: Marketing Automation (Python, Meta Marketing API, Google Ads Scripts), KI-Workflows (Claude, n8n, eigene Agenten), Performance Marketing (Google & Meta Ads) sowie datengetriebene KPI-Dashboards. Der Schwerpunkt liegt darauf, wiederkehrende Marketing-Prozesse zu automatisieren und Design mit Technik zu verbinden.',
   },
   {
