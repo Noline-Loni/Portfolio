@@ -2,7 +2,7 @@
 
 > Noline Lindor ist Creative Technologist an der Schnittstelle von Design, Marketing und Technologie. Sie gestaltet Interfaces und Kampagnen — und baut die Automatisierung dahinter (Python, Meta Marketing API, Google Ads Scripts, KI-Workflows mit Claude und n8n, KPI-Dashboards). Sitz in Bochum, Deutschland; arbeitet remote.
 
-## Leistungen
+## Skills
 - UI/UX Design, Brand Identity, 3D-Visualisierung
 - Marketing Automation (Python, Meta Marketing API, Google Ads Scripts)
 - KI-Workflows (Claude, n8n, eigene Agenten und Skills)
